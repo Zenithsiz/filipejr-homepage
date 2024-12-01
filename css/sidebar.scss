@@ -3,6 +3,9 @@
 .sidebar {
 	flex-shrink: 0;
 
+	display: flex;
+	flex-direction: column;
+
 	background-color: colors.$bg-dark2;
 
 	text-align: center;
@@ -10,13 +13,30 @@
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 
-	& > ul {
+	& > .local {
+		flex-grow: 1;
+
 		display: flex;
 		flex-direction: column;
 
 		list-style-type: none;
 		& > li {
 			border-bottom: 0.2rem solid colors.$bg-light3;
+			& > a {
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+				font-size: 2rem;
+			}
+		}
+	}
+
+	& > .external {
+		display: flex;
+		flex-direction: column-reverse;
+
+		list-style-type: none;
+		& > li {
+			border-top: 0.2rem solid colors.$bg-light3;
 			& > a {
 				padding-left: 0.5rem;
 				padding-right: 0.5rem;

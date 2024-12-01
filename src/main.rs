@@ -49,11 +49,23 @@ fn run() -> Result<(), anyhow::Error> {
 }
 
 fn render_nav() -> Element {
-	html::nav().with_class("sidebar").with_child(html::ul().with_children([
-		html::li().with_child(dynatos_router::anchor("/").with_text("Home")),
-		html::li().with_child(dynatos_router::anchor("/projects").with_text("Projects")),
-		html::li().with_child(dynatos_router::anchor("/about-me").with_text("About me")),
-	]))
+	let local = [("/", "Home"), ("/projects", "Projects"), ("/about-me", "About me")];
+	let external = [("https://gitea.filipejr.com", "Gitea")];
+
+	html::nav().with_class("sidebar").with_children([
+		html::ul().with_class("local").with_children(
+			local
+				.iter()
+				.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
+				.collect::<Vec<_>>(),
+		),
+		html::ul().with_class("external").with_children(
+			external
+				.iter()
+				.map(|&(location, text)| html::li().with_child(html::a().with_attr("href", location).with_text(text)))
+				.collect::<Vec<_>>(),
+		),
+	])
 }
 
 fn render_route() -> Option<Element> {
