@@ -1,0 +1,20 @@
+// Colors
+
+@use 'sass:color';
+
+// Background
+$bg: #292929;
+
+// Background steps
+$bg-step: 3%;
+
+$bg-dark1: color.adjust($bg, $lightness: -1 * $bg-step);
+$bg-dark2: color.adjust($bg, $lightness: -2 * $bg-step);
+$bg-dark3: color.adjust($bg, $lightness: -3 * $bg-step);
+
+$bg-light1: color.adjust($bg, $lightness: 1 * $bg-step);
+$bg-light2: color.adjust($bg, $lightness: 2 * $bg-step);
+$bg-light3: color.adjust($bg, $lightness: 3 * $bg-step);
+
+// Text
+$text: #acacac;

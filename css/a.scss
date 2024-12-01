@@ -1,0 +1,12 @@
+a {
+	color: #b0b0b0;
+
+	&:hover {
+		color: #a52a2a;
+	}
+
+	&:disabled {
+		color: #505050;
+		cursor: not-allowed;
+	}
+}

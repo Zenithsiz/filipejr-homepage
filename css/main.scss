@@ -1,0 +1,8 @@
+@use 'colors';
+
+.main {
+	background-color: colors.$bg-dark1;
+
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}

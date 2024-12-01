@@ -1,0 +1,21 @@
+@use 'colors.scss';
+
+.app {
+	flex-direction: row;
+
+	color: colors.$text;
+	background-color: colors.$bg;
+
+	$spacing: 0.5rem;
+	padding-left: $spacing;
+	padding-right: $spacing;
+	padding-top: $spacing;
+
+	& > :first-child {
+		border-top-left-radius: $spacing;
+	}
+
+	& > :last-child {
+		border-top-right-radius: $spacing;
+	}
+}
