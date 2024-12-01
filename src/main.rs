@@ -108,6 +108,10 @@ fn Projects() -> web_sys::Element {
 			"🚧 [dynatos] Rust web framework",
 			"https://gitea.filipejr.com/zenithsiz/dynatos",
 		),
+		(
+			"[filipejr-homepage] This page",
+			"https://gitea.filipejr.com/zenithsiz/filipejr-homepage",
+		),
 	];
 
 	html::div()
