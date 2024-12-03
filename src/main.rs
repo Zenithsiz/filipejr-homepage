@@ -106,10 +106,7 @@ fn Projects() -> web_sys::Element {
 			"🚧 [dynatos] Rust web framework",
 			"https://gitea.filipejr.com/zenithsiz/dynatos",
 		),
-		(
-			"[filipejr-homepage] This page",
-			"https://gitea.filipejr.com/zenithsiz/filipejr-homepage",
-		),
+		("[filipejr-homepage] This page", THIS_WEBSITE),
 	];
 
 	html::div()
@@ -124,6 +121,9 @@ fn Projects() -> web_sys::Element {
 			),
 		)
 }
+
+/// This website's source page
+const THIS_WEBSITE: &str = "https://gitea.filipejr.com/zenithsiz/filipejr-homepage";
 
 #[dynatos_builder::builder]
 fn AboutMe() -> web_sys::Element {
