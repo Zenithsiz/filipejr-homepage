@@ -10,5 +10,11 @@ REMOTE_PATH="/home/homepage/www/"
 trunk build --release
 
 # Copy to remote
-rsync -rzv "dist/" "$REMOTE:$REMOTE_PATH"
+rsync \
+	--recursive \
+	--compress \
+	--verbose \
+	--delete \
+	"dist/" \
+	"$REMOTE:$REMOTE_PATH"
 ssh "$REMOTE" "chown -R homepage:www-data '$REMOTE_PATH' && chmod -R 1750 '$REMOTE_PATH'"
