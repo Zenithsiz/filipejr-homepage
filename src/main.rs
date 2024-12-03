@@ -6,7 +6,7 @@
 // Imports
 use {
 	dynatos::{NodeWithDynChild, ObjectWithContext},
-	dynatos_html::{html, ElementWithAttr, ElementWithClass, ElementWithInnerHtml, NodeWithChildren, NodeWithText},
+	dynatos_html::{html, ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText},
 	dynatos_reactive::SignalGetCloned,
 	dynatos_router::Location,
 	dynatos_title::ObjectWithTitle,
@@ -83,10 +83,8 @@ fn render_route() -> Option<Element> {
 
 #[dynatos_builder::builder]
 fn Home() -> web_sys::Element {
-	html::div()
-		.with_class("home")
-		.with_title("Home | Filipejr")
-		.with_inner_html(include_str!("../pages/home.html"))
+	let [page] = dynatos_html::html_file!("pages/home.html");
+	page.with_title("Home | Filipejr")
 }
 
 #[dynatos_builder::builder]
@@ -129,10 +127,11 @@ fn Projects() -> web_sys::Element {
 
 #[dynatos_builder::builder]
 fn AboutMe() -> web_sys::Element {
-	html::div()
-		.with_class("about-me")
-		.with_title("About me | Filipejr")
-		.with_inner_html(include_str!("../pages/about-me.html"))
+	let this_website =
+		dynatos_router::anchor("https://gitea.filipejr.com/zenithsiz/filipejr-homepage").with_text("this website");
+
+	let [page] = dynatos_html::html_file!("pages/about-me.html");
+	page.with_title("About me | Filipejr")
 }
 
 #[dynatos_builder::builder]
