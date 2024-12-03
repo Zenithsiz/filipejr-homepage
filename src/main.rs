@@ -127,9 +127,6 @@ fn Projects() -> web_sys::Element {
 
 #[dynatos_builder::builder]
 fn AboutMe() -> web_sys::Element {
-	let this_website =
-		dynatos_router::anchor("https://gitea.filipejr.com/zenithsiz/filipejr-homepage").with_text("this website");
-
 	let [page] = dynatos_html::html_file!("pages/about-me.html");
 	page.with_title("About me | Filipejr")
 }
