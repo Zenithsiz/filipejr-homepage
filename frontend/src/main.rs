@@ -1,4 +1,4 @@
-//! Router example
+//! Homepage frontend
 
 // Features
 #![feature(try_blocks, thread_local)]
