@@ -3,8 +3,8 @@
 set -e
 
 # Output directory (for the sass -> css compilation) and file (for merging of all css)
-OUTPUT_DIR="target/css"
-OUTPUT_FILE="target/css/output.css"
+OUTPUT_DIR="../target/css"
+OUTPUT_FILE="../target/css/output.css"
 
 # Compile all css to `target/css`
 # TODO: Don't remove the output directory and use `sass --update`

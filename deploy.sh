@@ -7,7 +7,9 @@ REMOTE="homepage@filipejr.com"
 REMOTE_PATH="/home/homepage/www/"
 
 # Build
-trunk build --release
+trunk build \
+	--release \
+	--config frontend/Trunk.toml
 
 # Copy to remote
 rsync \
