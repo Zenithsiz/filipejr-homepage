@@ -5,8 +5,11 @@ edition = "2021"
 
 [dependencies]
 
-anyhow = { workspace = true }
+# Workspace
+homepage = { workspace = true }
+
 console_error_panic_hook = { workspace = true }
+derive_more = { workspace = true }
 dynatos = { workspace = true }
 dynatos-builder = { workspace = true }
 dynatos-context = { workspace = true }
@@ -16,9 +19,11 @@ dynatos-reactive = { workspace = true }
 dynatos-router = { workspace = true }
 dynatos-title = { workspace = true }
 dynatos-util = { workspace = true }
+reqwest = { workspace = true, features = ["json"] }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 tracing-web = { workspace = true }
 url = { workspace = true }
 wasm-bindgen = { workspace = true }
 web-sys = { workspace = true }
+zutil-app-error = { workspace = true }

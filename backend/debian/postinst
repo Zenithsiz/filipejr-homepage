@@ -1,0 +1,21 @@
+#!/bin/env sh
+
+set -e
+
+if [ "$1" = "configure" ]; then
+	# Add the user if it doesn't exist
+	if ! getent passwd "homepage" > /dev/null; then
+		adduser \
+			--system \
+			--home "/var/lib/homepage" \
+			--group \
+			"homepage"
+	fi
+
+	# Create directories
+	install --directory -m 0775 -o "homepage" -g "homepage" "/etc/homepage"
+	install --directory -m 0775 -o "homepage" -g "homepage" "/var/lib/homepage"
+	install --directory -m 0775 -o "homepage" -g "homepage" "/var/cache/homepage"
+fi
+
+#DEBHELPER#

@@ -1,0 +1,18 @@
+[Unit]
+Description=Homepage backend
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/homepage-backend
+WorkingDirectory=/var/lib/homepage
+Restart=on-failure
+Environment="XDG_CONFIG_HOME=/etc"
+Environment="XDG_CACHE_HOME=/var/cache"
+Environment="XDG_DATA_HOME=/var/lib"
+User=homepage
+Group=homepage
+
+[Install]
+WantedBy=multi-user.target

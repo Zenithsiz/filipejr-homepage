@@ -3,6 +3,10 @@ trunk-version = "0.21.4"
 [build]
 minify = "on_release"
 
+[[proxy]]
+rewrite = "/backend/"
+backend = "http://localhost:8081/"
+
 [[hooks]]
 stage = "pre_build"
 command = "./compile_css.sh"

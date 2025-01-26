@@ -1,17 +1,22 @@
 //! Homepage frontend
 
 // Features
-#![feature(try_blocks, thread_local)]
+#![feature(try_blocks, thread_local, type_alias_impl_trait)]
 
 // Imports
 use {
-	dynatos::{NodeWithDynChild, ObjectWithContext},
+	dynatos::{NodeWithDynChild, ObjectAttachContext},
 	dynatos_html::{html, ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText},
-	dynatos_reactive::SignalGetCloned,
+	dynatos_loadable::{Loadable, LoadableSignal},
+	dynatos_reactive::{SignalBorrow, SignalGetCloned},
 	dynatos_router::Location,
 	dynatos_title::ObjectWithTitle,
+	homepage::Project,
+	std::rc::Rc,
 	tracing_subscriber::prelude::*,
+	url::Url,
 	web_sys::Element,
+	zutil_app_error::{AppError, AppErrorContext},
 };
 
 fn main() {
@@ -32,13 +37,25 @@ fn main() {
 	}
 }
 
-fn run() -> Result<(), anyhow::Error> {
+#[derive(Clone)]
+#[derive(derive_more::Deref)]
+#[deref(forward)]
+struct BackendUrl(Rc<Url>);
+
+fn run() -> Result<(), AppError> {
 	let window = web_sys::window().expect("Unable to get window");
 	let document = window.document().expect("Unable to get document");
 	let body = document.body().expect("Unable to get document body");
 
 	let location = Location::new();
-	body.with_context(location).with_child(
+	body.attach_context(location.clone());
+
+	// Build the backend url
+	let backend_url = location.get_cloned().join("backend/").expect("Backend url was invalid");
+	body.attach_context(BackendUrl(Rc::new(backend_url)));
+
+	// And attach our app to the body
+	body.with_child(
 		html::div()
 			.with_class("app")
 			.with_child(self::render_nav())
@@ -88,44 +105,43 @@ fn Home() -> web_sys::Element {
 
 #[dynatos_builder::builder]
 fn Projects() -> web_sys::Element {
-	let projects = [
-		(
-			"[ddw3] Digimon world 2003 decompilation",
-			"https://gitea.filipejr.com/zenithsiz/ddw3",
-		),
-		(
-			"[zbuild] Make-like build system",
-			"https://gitea.filipejr.com/zenithsiz/zbuild",
-		),
-		(
-			"[zsw] Zenithsiz's scrolling wallpaper",
-			"https://gitea.filipejr.com/zenithsiz/zsw",
-		),
-		(
-			"🚧 [dynatos] Rust web framework",
-			"https://gitea.filipejr.com/zenithsiz/dynatos",
-		),
-		("[filipejr-homepage] This page", THIS_WEBSITE),
-	];
+	let projects = LoadableSignal::new(|| async move {
+		let backend_url = dynatos_context::expect_cloned::<BackendUrl>();
+		let projects_url = backend_url.join("projects").context("Unable to create url")?;
+		let projects = reqwest::get(projects_url)
+			.await
+			.context("Unable to get project")?
+			.json::<Vec<Project>>()
+			.await
+			.context("Unable to parse projects")?;
+
+		Ok::<_, AppError>(projects)
+	});
 
 	html::div()
 		.with_class("projects")
 		.with_title("Projects | Filipejr")
-		.with_child(
-			html::ul().with_class("project").with_children(
+		.with_dyn_child(move || match projects.borrow() {
+			Loadable::Empty => html::p().with_text("Loading..."),
+			Loadable::Err(err) => html::pre().with_text(format!("Unable to load projects:\n{err:?}")),
+			Loadable::Loaded(projects) => html::ul().with_class("project").with_children(
 				projects
 					.iter()
-					.map(|&(name, link)| html::li().with_child(html::a().with_attr("href", link).with_text(name)))
+					.map(|project| {
+						html::li().with_child(
+							html::a()
+								.with_attr("href", &project.link)
+								.with_text(project.name.as_str()),
+						)
+					})
 					.collect::<Vec<_>>(),
 			),
-		)
+		})
 }
-
-/// This website's source page
-const THIS_WEBSITE: &str = "https://gitea.filipejr.com/zenithsiz/filipejr-homepage";
 
 #[dynatos_builder::builder]
 fn AboutMe() -> web_sys::Element {
+	use homepage::THIS_WEBSITE;
 	dynatos_html::html_file!("frontend/pages/about-me.html").with_title("About me | Filipejr")
 }
 
