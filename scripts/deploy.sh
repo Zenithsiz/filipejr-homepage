@@ -2,10 +2,6 @@
 
 set -e
 
-scripts/deploy-frontend.sh &
-DEPLOY_FRONTEND=$!
-scripts/deploy-backend.sh &
-DEPLOY_BACKEND=$!
-
-wait $DEPLOY_FRONTEND
-wait $DEPLOY_BACKEND
+parallel --ungroup ::: \
+	scripts/deploy-frontend.sh \
+	scripts/deploy-backend.sh
