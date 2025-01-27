@@ -100,7 +100,7 @@ fn render_route() -> Option<Element> {
 
 #[dynatos_builder::builder]
 fn Home() -> web_sys::Element {
-	dynatos_html::html_file!("frontend/pages/home.html").with_title("Home | Filipejr")
+	dynatos_html::html_file!("homepage-frontend/pages/home.html").with_title("Home | Filipejr")
 }
 
 #[dynatos_builder::builder]
@@ -142,7 +142,7 @@ fn Projects() -> web_sys::Element {
 #[dynatos_builder::builder]
 fn AboutMe() -> web_sys::Element {
 	use homepage::THIS_WEBSITE;
-	dynatos_html::html_file!("frontend/pages/about-me.html").with_title("About me | Filipejr")
+	dynatos_html::html_file!("homepage-frontend/pages/about-me.html").with_title("About me | Filipejr")
 }
 
 #[dynatos_builder::builder]

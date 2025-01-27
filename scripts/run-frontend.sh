@@ -3,4 +3,4 @@
 set -e
 
 trunk serve \
-	--config frontend/Trunk.toml
+	--config homepage-frontend/Trunk.toml

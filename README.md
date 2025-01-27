@@ -4,8 +4,8 @@ This is the repository for my [homepage](https://filipejr.com)
 
 This project consists of 2 components:
 
-- [Frontend](frontend/) (Rust WASM)
-- [Backend](backend/) (Rust)
+- [Frontend](homepage-frontend/) (Rust WASM)
+- [Backend](homepage-backend/) (Rust)
 
 The frontend expects the backend to be mounted at `<frontend-location>/backend`.
 

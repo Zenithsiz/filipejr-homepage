@@ -1,7 +1,7 @@
 [workspace]
 
 resolver = "2"
-members = ["homepage", "backend", "frontend"]
+members = ["homepage", "homepage-backend", "homepage-frontend"]
 
 [workspace.package]
 authors = ["Filipe Rodrigues <filipejacintorodrigues1@gmail.com>"]
@@ -11,8 +11,8 @@ license-file = "LICENSE-MIT"
 
 # Workspace
 homepage = { path = "homepage" }
-homepage-backend = { path = "backend" }
-homepage-frontend = { path = "frontend" }
+homepage-backend = { path = "homepage-backend" }
+homepage-frontend = { path = "homepage-frontend" }
 
 axum = "0.8.1"
 console_error_panic_hook = "0.1.7"

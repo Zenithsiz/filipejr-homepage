@@ -2,7 +2,7 @@
 
 set -e
 
-cd backend
+cd homepage-backend/
 cargo watch \
 	-x 'run -p homepage-backend' \
 	--watch .. \
