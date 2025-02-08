@@ -1,0 +1,20 @@
+rule run_frontend {
+	exec "trunk" "serve"
+		"--config" "homepage-frontend/Trunk.toml";
+}
+
+rule deploy_frontend {
+	exec "trunk" "build"
+		"--release"
+		"--config" "homepage-frontend/Trunk.toml";
+
+	exec "rsync"
+		"--recursive"
+		"--compress"
+		"--verbose"
+		"--delete"
+		"homepage-frontend/dist/"
+		"{remote}:{remote_www_path}/";
+
+	exec "ssh" remote "chown -R homepage:www-data '{remote_www_path}' && chmod -R 1750 '{remote_www_path}'";
+}

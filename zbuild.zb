@@ -1,0 +1,14 @@
+include "zbuild/remote.zb";
+include "zbuild/frontend.zb";
+include "zbuild/backend.zb";
+
+
+rule run {
+	dep rule run_frontend;
+	dep rule run_backend;
+}
+
+rule deploy {
+	dep rule deploy_frontend;
+	dep rule deploy_backend;
+}

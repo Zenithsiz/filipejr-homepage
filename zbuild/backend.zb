@@ -1,0 +1,32 @@
+rule run_backend {
+	exec {
+		cwd "homepage-backend/";
+		args "cargo" "watch"
+			"-x" "run -p homepage-backend"
+			"--watch" ".."
+			"--ignore" "../frontend";
+	};
+}
+
+rule deploy_backend {
+	exec "cargo" "build"
+		"--release"
+		"--target" "x86_64-unknown-linux-musl"
+		"--package" "homepage-backend";
+
+	exec {
+		stdout deb_path;
+		args "cargo" "deb"
+			"--package" "homepage-backend"
+			"--target" "x86_64-unknown-linux-musl"
+			"--no-build";
+	};
+
+	exec {
+		stdout deb;
+		args "basename" deb_path;
+	};
+
+	exec "scp" deb_path "{remote}:{remote_deb_path}/";
+	exec "ssh" remote "dpkg -i '{remote_deb_path}/{deb}' && systemctl daemon-reload && systemctl restart homepage-backend";
+}
