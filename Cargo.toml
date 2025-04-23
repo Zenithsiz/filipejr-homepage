@@ -14,9 +14,9 @@ homepage = { path = "homepage" }
 homepage-backend = { path = "homepage-backend" }
 homepage-frontend = { path = "homepage-frontend" }
 
-axum = "0.8.1"
+axum = "0.8.3"
 console_error_panic_hook = "0.1.7"
-derive_more = "1.0.0"
+derive_more = "2.0.1"
 dynatos = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
 dynatos-builder = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
 dynatos-context = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
@@ -26,10 +26,10 @@ dynatos-reactive = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0
 dynatos-router = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
 dynatos-title = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
 dynatos-util = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "6a1011f0ad3fdc896b1e117eefddcff7e729e777" }
-reqwest = "0.12.12"
-serde = "1.0.217"
-tokio = "1.43.0"
-toml = "0.8.19"
+reqwest = "0.12.15"
+serde = "1.0.219"
+tokio = "1.44.2"
+toml = "0.8.20"
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 tracing-web = "0.1.3"
