@@ -9,7 +9,7 @@ edition = "2021"
 homepage = { workspace = true }
 
 console_error_panic_hook = { workspace = true }
-derive_more = { workspace = true }
+derive_more = { workspace = true, features = ["full"] }
 dynatos = { workspace = true }
 dynatos-builder = { workspace = true }
 dynatos-context = { workspace = true }
