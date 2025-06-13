@@ -15,7 +15,7 @@ use {
 	std::rc::Rc,
 	tracing_subscriber::prelude::*,
 	url::Url,
-	web_sys::Element,
+	web_sys::HtmlElement,
 	zutil_app_error::{AppError, AppErrorContext},
 };
 
@@ -65,7 +65,7 @@ fn run() -> Result<(), AppError> {
 	Ok(())
 }
 
-fn render_nav() -> Element {
+fn render_nav() -> HtmlElement {
 	let local = [("/", "Home"), ("/projects", "Projects"), ("/about-me", "About me")];
 	let external = [("https://gitea.filipejr.com", "Gitea")];
 
@@ -85,7 +85,7 @@ fn render_nav() -> Element {
 	])
 }
 
-fn render_route() -> Option<Element> {
+fn render_route() -> Option<HtmlElement> {
 	let location = dynatos_context::with_expect::<Location, _, _>(|location| location.get_cloned());
 
 	tracing::info!(%location, "Rendering route");
@@ -99,12 +99,12 @@ fn render_route() -> Option<Element> {
 
 
 #[dynatos_builder::builder]
-fn Home() -> web_sys::Element {
+fn Home() -> web_sys::HtmlElement {
 	dynatos_html::html_file!("homepage-frontend/pages/home.html").with_title("Home | Filipejr")
 }
 
 #[dynatos_builder::builder]
-fn Projects() -> web_sys::Element {
+fn Projects() -> web_sys::HtmlElement {
 	let projects = LoadableSignal::new(|| async move {
 		let backend_url = dynatos_context::expect_cloned::<BackendUrl>();
 		let projects_url = backend_url.join("projects").context("Unable to create url")?;
@@ -140,12 +140,12 @@ fn Projects() -> web_sys::Element {
 }
 
 #[dynatos_builder::builder]
-fn AboutMe() -> web_sys::Element {
+fn AboutMe() -> web_sys::HtmlElement {
 	use homepage::THIS_WEBSITE;
 	dynatos_html::html_file!("homepage-frontend/pages/about-me.html").with_title("About me | Filipejr")
 }
 
 #[dynatos_builder::builder]
-fn NotFound() -> web_sys::Element {
+fn NotFound() -> web_sys::HtmlElement {
 	html::p().with_title("Not found | Filipejr").with_text("Unknown page")
 }
