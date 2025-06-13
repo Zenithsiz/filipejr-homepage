@@ -1,3 +1,11 @@
+// Note: The default must be first because we might overwrite
+//       generic elements elsewhere.
+@forward 'default.scss';
+
+@forward 'a.scss';
+@forward 'app.scss';
+@forward 'sidebar.scss';
+
 @use 'colors';
 
 .main {

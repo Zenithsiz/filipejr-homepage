@@ -2,20 +2,18 @@
 
 set -e
 
-# Output directory (for the sass -> css compilation) and file (for merging of all css)
-OUTPUT_DIR="../target/css"
-OUTPUT_FILE="../target/css/output.css"
+if [ "$TRUNK_PROFILE" == "debug" ]; then
+	# TODO: Once we can make `trunk serve` actually allow
+	#       access to the files, don't embed the sources.
+	SASS_ARGS="--embed-source-map --embed-sources"
+elif [ "$TRUNK_PROFILE" == "release" ]; then
+	SASS_ARGS="--no-source-map"
+else
+	printf "Unknown \$TRUNK_PROFILE: \"$TRUNK_PROFILE\"\n"
+	exit 1
+fi
 
-# Compile all css to `target/css`
-# TODO: Don't remove the output directory and use `sass --update`
-#       once we can bundle only the generated files and ignore any
-#       old files no longer in `css/`.
-rm -rf "$OUTPUT_DIR"
-sass "css/:$OUTPUT_DIR" \
-	--no-source-map \
+sass "css/main.scss" "../target/css/output.css" \
 	--load-path="css/" \
 	--style=compressed \
-
-# Then merge them
-# TODO: Find a proper merging tool?
-find "$OUTPUT_DIR" -iname '*.css' -not -path "$OUPUT_FILE" -exec cat {} \+ | tr -d '\n' > "$OUTPUT_FILE"
+	$SASS_ARGS
