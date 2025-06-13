@@ -20,7 +20,10 @@ dynatos-router = { workspace = true }
 dynatos-title = { workspace = true }
 dynatos-util = { workspace = true }
 reqwest = { workspace = true, features = ["json"] }
-tracing = { workspace = true }
+tracing = { workspace = true, features = [
+	"max_level_trace",
+	"release_max_level_info",
+] }
 tracing-subscriber = { workspace = true }
 tracing-web = { workspace = true }
 url = { workspace = true }
