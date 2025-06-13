@@ -92,7 +92,7 @@ fn render_nav() -> HtmlElement {
 fn render_route() -> Option<HtmlElement> {
 	let location = dynatos_context::with_expect::<Location, _, _>(|location| location.get_cloned());
 
-	tracing::info!(%location, "Rendering route");
+	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
 		"" => Some(Home::new()),
 		"/projects" => Some(Projects::new()),
