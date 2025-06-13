@@ -51,7 +51,11 @@ fn run() -> Result<(), AppError> {
 	body.attach_context(location.clone());
 
 	// Build the backend url
-	let backend_url = location.get_cloned().join("backend/").expect("Backend url was invalid");
+	// TODO: Should this be reactive?
+	let backend_url = location
+		.get_cloned_raw()
+		.join("backend/")
+		.expect("Backend url was invalid");
 	body.attach_context(BackendUrl(Rc::new(backend_url)));
 
 	// And attach our app to the body
