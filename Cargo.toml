@@ -14,26 +14,26 @@ homepage = { path = "homepage" }
 homepage-backend = { path = "homepage-backend" }
 homepage-frontend = { path = "homepage-frontend" }
 
-axum = "0.8.3"
+axum = "0.8.6"
 console_error_panic_hook = "0.1.7"
 derive_more = "2.0.1"
-dynatos = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-builder = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-context = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-html = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-loadable = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-reactive = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-router = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-title = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-dynatos-util = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "7cf075a0144fdd7b4fbc47c8806117ed5e27bc5f" }
-reqwest = "0.12.15"
-serde = "1.0.219"
-tokio = "1.44.2"
-toml = "0.8.20"
+dynatos = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-builder = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-context = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-html = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-loadable = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-reactive = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-router = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-title = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+dynatos-util = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "24a76e3f37118434eef10d41c1597e877e5bb7a3" }
+reqwest = "0.12.23"
+serde = "1.0.228"
+tokio = "1.47.1"
+toml = "0.9.7"
 tracing = "0.1.41"
-tracing-subscriber = "0.3.19"
+tracing-subscriber = "0.3.20"
 tracing-web = "0.1.3"
-url = "2.5.4"
-wasm-bindgen = "0.2.99"
-web-sys = "0.3.76"
+url = "2.5.7"
+wasm-bindgen = "0.2.104"
+web-sys = "0.3.81"
 zutil-app-error = { git = "ssh://github.com/Zenithsiz/zutil", rev = "978fa5df733d59fc691812ce2fa6072bf901dc7f" }
