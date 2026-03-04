@@ -1,5 +1,5 @@
 [package]
-name = "homepage-frontend"
+name    = "homepage-frontend"
 version = "0.1.0"
 edition = "2024"
 
@@ -8,25 +8,22 @@ edition = "2024"
 # Workspace
 homepage = { workspace = true }
 
+app-error                = { workspace = true }
 console_error_panic_hook = { workspace = true }
-derive_more = { workspace = true, features = ["full"] }
-dynatos = { workspace = true }
-dynatos-builder = { workspace = true }
-dynatos-context = { workspace = true }
-dynatos-html = { workspace = true }
-dynatos-loadable = { workspace = true }
-dynatos-reactive = { workspace = true }
-dynatos-router = { workspace = true }
-dynatos-title = { workspace = true }
-dynatos-util = { workspace = true }
-reqwest = { workspace = true, features = ["json"] }
-tracing = { workspace = true, features = [
-	"max_level_trace",
-	"release_max_level_info",
-] }
-tracing-subscriber = { workspace = true }
-tracing-web = { workspace = true }
-url = { workspace = true }
-wasm-bindgen = { workspace = true }
-web-sys = { workspace = true }
-app-error = { workspace = true }
+derive_more              = { features = ["full"], workspace = true }
+dynatos                  = { workspace = true }
+dynatos-builder          = { workspace = true }
+dynatos-context          = { workspace = true }
+dynatos-html             = { workspace = true }
+dynatos-loadable         = { workspace = true }
+dynatos-reactive         = { workspace = true }
+dynatos-router           = { workspace = true }
+dynatos-title            = { workspace = true }
+dynatos-util             = { workspace = true }
+reqwest                  = { features = ["json"], workspace = true }
+tracing                  = { features = ["max_level_trace", "release_max_level_info"], workspace = true }
+tracing-subscriber       = { workspace = true }
+tracing-web              = { workspace = true }
+url                      = { workspace = true }
+wasm-bindgen             = { workspace = true }
+web-sys                  = { workspace = true }
