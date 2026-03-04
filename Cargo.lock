@@ -18,6 +18,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
 
 [[package]]
+name = "app-error"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32a03f14a783259cead5d653e52213b378718e63d61662e6e883de1d50e9e39d"
+dependencies = [
+ "itertools",
+]
+
+[[package]]
 name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -700,6 +709,7 @@ dependencies = [
 name = "homepage-backend"
 version = "0.1.0"
 dependencies = [
+ "app-error",
  "axum",
  "homepage",
  "serde",
@@ -708,13 +718,13 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "url",
- "zutil-app-error",
 ]
 
 [[package]]
 name = "homepage-frontend"
 version = "0.1.0"
 dependencies = [
+ "app-error",
  "console_error_panic_hook",
  "derive_more",
  "dynatos",
@@ -734,7 +744,6 @@ dependencies = [
  "url",
  "wasm-bindgen",
  "web-sys",
- "zutil-app-error",
 ]
 
 [[package]]
@@ -2632,11 +2641,6 @@ name = "zmij"
 version = "1.0.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
-
-[[package]]
-name = "zutil-app-error"
-version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f#978fa5df733d59fc691812ce2fa6072bf901dc7f"
 
 [[package]]
 name = "zutil-cloned"
