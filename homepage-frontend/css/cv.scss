@@ -1,0 +1,33 @@
+@use 'colors.scss';
+
+.cv-page {
+	display: flex;
+
+	& > * {
+		flex-shrink: 0;
+	}
+
+	.lang-selector {
+		flex-shrink: 1;
+		height: fit-content;
+		display: flex;
+		flex-direction: row;
+		gap: 0.2rem;
+
+		& > * {
+			padding: 0.4rem;
+			border: 0.2rem solid colors.$bg-light1;
+			margin-top: 0.1rem;
+			margin-bottom: 0.1rem;
+
+			font-size: 1rem;
+		}
+	}
+
+	.cvs {
+		flex-shrink: 1;
+		.cv-pdf {
+			height: 100%;
+		}
+	}
+}

@@ -377,7 +377,7 @@ dependencies = [
  "dynatos-util",
  "extend",
  "tracing",
- "zutil-cloned",
+ "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
 ]
 
 [[package]]
@@ -410,7 +410,7 @@ dependencies = [
  "tokio",
  "tracing",
  "wasm-bindgen-futures",
- "zutil-cloned",
+ "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
 ]
 
 [[package]]
@@ -432,7 +432,7 @@ dependencies = [
  "url",
  "wasm-bindgen",
  "web-sys",
- "zutil-cloned",
+ "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
 ]
 
 [[package]]
@@ -738,12 +738,14 @@ dependencies = [
  "dynatos-util",
  "homepage",
  "reqwest",
+ "strum",
  "tracing",
  "tracing-subscriber",
  "tracing-web",
  "url",
  "wasm-bindgen",
  "web-sys",
+ "zutil-cloned 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1725,6 +1727,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596"
 
 [[package]]
+name = "strum"
+version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9628de9b8791db39ceda2b119bbe13134770b56c138ec1d3af810d045c04f9bd"
+dependencies = [
+ "strum_macros",
+]
+
+[[package]]
+name = "strum_macros"
+version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab85eea0270ee17587ed4156089e10b9e6880ee688791d45a905f5b1ca36f664"
+dependencies = [
+ "heck",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "subtle"
 version = "2.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2641,6 +2664,16 @@ name = "zmij"
 version = "1.0.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
+
+[[package]]
+name = "zutil-cloned"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e2c735d6a4ffcc2f59af6177967ee0e25e9938411d5137ae421bd16e1524f2eb"
+dependencies = [
+ "quote",
+ "syn",
+]
 
 [[package]]
 name = "zutil-cloned"

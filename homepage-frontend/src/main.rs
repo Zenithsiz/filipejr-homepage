@@ -1,22 +1,38 @@
 //! Homepage frontend
 
 // Features
-#![feature(try_blocks, thread_local, type_alias_impl_trait)]
+#![feature(
+	try_blocks,
+	thread_local,
+	type_alias_impl_trait,
+	stmt_expr_attributes,
+	proc_macro_hygiene
+)]
 
 // Imports
 use {
 	app_error::{AppError, Context},
-	dynatos::{NodeWithDynChild, ObjectAttachContext},
-	dynatos_html::{ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText, html},
+	dynatos::{ElementWithDynAttr, NodeWithDynChild, ObjectAttachContext},
+	dynatos_html::{
+		ElementWithAttr,
+		ElementWithClass,
+		EventTargetWithListener,
+		NodeWithChildren,
+		NodeWithText,
+		ev,
+		html,
+	},
 	dynatos_loadable::{Loadable, LoadableSignal},
-	dynatos_reactive::{SignalBorrow, SignalGetCloned},
+	dynatos_reactive::{Signal, SignalBorrow, SignalGet, SignalGetCloned, SignalSet},
 	dynatos_router::Location,
 	dynatos_title::ObjectWithTitle,
 	homepage::Project,
 	std::rc::Rc,
+	strum::IntoEnumIterator,
 	tracing_subscriber::prelude::*,
 	url::Url,
 	web_sys::HtmlElement,
+	zutil_cloned::cloned,
 };
 
 fn main() {
@@ -70,7 +86,12 @@ fn run() -> Result<(), AppError> {
 }
 
 fn render_nav() -> HtmlElement {
-	let local = [("/", "Home"), ("/projects", "Projects"), ("/about-me", "About me")];
+	let local = [
+		("/", "Home"),
+		("/projects", "Projects"),
+		("/cv", "CV"),
+		("/about-me", "About me"),
+	];
 	let external = [("https://gitea.filipejr.com", "Gitea")];
 
 	html::nav().with_class("sidebar").with_children([
@@ -96,6 +117,7 @@ fn render_route() -> Option<HtmlElement> {
 	match location.path().trim_end_matches('/') {
 		"" => Some(Home::new()),
 		"/projects" => Some(Projects::new()),
+		"/cv" => Some(CV::new()),
 		"/about-me" => Some(AboutMe::new()),
 		_ => Some(NotFound::new()),
 	}
@@ -147,6 +169,50 @@ fn Projects() -> web_sys::HtmlElement {
 fn AboutMe() -> web_sys::HtmlElement {
 	use homepage::THIS_WEBSITE;
 	dynatos_html::html_file!("homepage-frontend/pages/about-me.html").with_title("About me | Filipejr")
+}
+
+#[dynatos_builder::builder]
+fn CV() -> web_sys::HtmlElement {
+	#[derive(PartialEq, Eq, Clone, Copy, Debug)]
+	#[derive(derive_more::Display)]
+	#[derive(strum::EnumIter)]
+	enum Lang {
+		#[display("en")]
+		En,
+		#[display("pt")]
+		Pt,
+	}
+
+	let cur_lang = Signal::new(Lang::En);
+
+	let langs_selector = Lang::iter()
+		.map(|lang| {
+			let display = match lang {
+				Lang::En => "English",
+				Lang::Pt => "Português",
+			};
+
+			#[cloned(cur_lang)]
+			html::button()
+				.with_text(display)
+				.with_event_listener::<ev::Click>(move |_| cur_lang.set(lang))
+		})
+		.collect::<Vec<_>>();
+	let lang_selector = html::div().with_class("lang-selector").with_children(langs_selector);
+
+	let cvs = Lang::iter()
+		.map(|lang| {
+			let src = format!("/backend/cv.pdf?lang={lang}");
+
+			#[cloned(cur_lang)]
+			dynatos_html::html_file!("homepage-frontend/pages/cv/pdf.html")
+				.with_dyn_attr_if("hidden", move || cur_lang.get() == lang)
+		})
+		.collect::<Vec<_>>();
+
+	let cvs = html::div().with_class("cvs").with_children(cvs);
+
+	dynatos_html::html_file!("homepage-frontend/pages/cv.html").with_title("CV | Filipejr")
 }
 
 #[dynatos_builder::builder]

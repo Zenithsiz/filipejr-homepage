@@ -21,9 +21,11 @@ dynatos-router           = { workspace = true }
 dynatos-title            = { workspace = true }
 dynatos-util             = { workspace = true }
 reqwest                  = { features = ["json"], workspace = true }
+strum                    = { features = ["derive"], workspace = true }
 tracing                  = { features = ["max_level_trace", "release_max_level_info"], workspace = true }
 tracing-subscriber       = { workspace = true }
 tracing-web              = { workspace = true }
 url                      = { workspace = true }
 wasm-bindgen             = { workspace = true }
 web-sys                  = { workspace = true }
+zutil-cloned             = { workspace = true }

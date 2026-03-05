@@ -16,6 +16,11 @@
 	box-sizing: border-box;
 }
 
+// Hidden elements should have `display: none`
+*[hidden] {
+	display: none;
+}
+
 html {
 	// Use the `system-ui` font, if available
 	font-family: system-ui;
