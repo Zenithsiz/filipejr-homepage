@@ -16,5 +16,5 @@ rule deploy_frontend {
 		"homepage-frontend/dist/"
 		"{remote}:{remote_www_path}/";
 
-	exec "ssh" remote "chown -R homepage:www-data '{remote_www_path}' && chmod -R 1750 '{remote_www_path}'";
+	exec "ssh" remote "chown -R homepage:homepage '{remote_www_path}' && chmod -R 1775 '{remote_www_path}'";
 }
