@@ -206,7 +206,7 @@ fn CV() -> web_sys::HtmlElement {
 
 			#[cloned(cur_lang)]
 			dynatos_html::html_file!("homepage-frontend/pages/cv/pdf.html")
-				.with_dyn_attr_if("hidden", move || cur_lang.get() == lang)
+				.with_dyn_attr_if("hidden", move || cur_lang.get() != lang)
 		})
 		.collect::<Vec<_>>();
 
