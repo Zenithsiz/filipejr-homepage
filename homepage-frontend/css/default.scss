@@ -14,6 +14,9 @@
 
 	// Padding should be included in size
 	box-sizing: border-box;
+
+	// By default, we should occupy the most we can
+	flex-shrink: 0;
 }
 
 // Hidden elements should have `display: none`
@@ -37,7 +40,7 @@ body {
 	overflow: clip;
 }
 
-// Use flex on all `div`s occupying max size.
+// Use flex on all `div`s occupying max size, byt able to shrink.
 div {
 	display: flex;
 	flex-direction: column;
@@ -45,6 +48,8 @@ div {
 	height: 100%;
 	max-width: 100%;
 	max-height: 100%;
+
+	flex-shrink: 1;
 }
 
 // Tables shouldn't have any built-in spacing
