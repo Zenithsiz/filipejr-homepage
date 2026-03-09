@@ -18,15 +18,15 @@ app-error                = "0.1.0"
 axum                     = "0.8.8"
 console_error_panic_hook = "0.1.7"
 derive_more              = "2.1.1"
-dynatos                  = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-builder          = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-context          = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-html             = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-loadable         = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-reactive         = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-router           = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-title            = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
-dynatos-util             = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "650e86638add5dccec33d65d39b7f180d4263b0e" }
+dynatos                  = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-builder          = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-context          = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-html             = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-loadable         = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-reactive         = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-router           = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-title            = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
+dynatos-util             = { git = "ssh://github.com/Zenithsiz/dynatos", rev = "055af457d396619cfad4d89eb5e54540389027d3" }
 reqwest                  = "0.13.2"
 serde                    = "1.0.228"
 strum                    = "0.28.0"
