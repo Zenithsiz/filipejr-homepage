@@ -85,24 +85,29 @@ async fn main() -> Result<(), AppError> {
 async fn projects() -> Json<Vec<Project>> {
 	let projects = vec![
 		Project {
-			name: "[ddw3] Digimon world 2003 decompilation".to_owned(),
-			link: "https://gitea.filipejr.com/zenithsiz/ddw3".to_owned(),
+			name:        "ddw3".to_owned(),
+			description: "Digimon world 2003 decompilation".to_owned(),
+			link:        "https://gitea.filipejr.com/zenithsiz/ddw3".to_owned(),
 		},
 		Project {
-			name: "[zbuild] Make-like build system".to_owned(),
-			link: "https://gitea.filipejr.com/zenithsiz/zbuild".to_owned(),
+			name:        "zbuild".to_owned(),
+			description: "Make-like build system".to_owned(),
+			link:        "https://gitea.filipejr.com/zenithsiz/zbuild".to_owned(),
 		},
 		Project {
-			name: "[zsw] Zenithsiz's scrolling wallpaper".to_owned(),
-			link: "https://gitea.filipejr.com/zenithsiz/zsw".to_owned(),
+			name:        "zsw".to_owned(),
+			description: "Zenithsiz's scrolling wallpaper".to_owned(),
+			link:        "https://gitea.filipejr.com/zenithsiz/zsw".to_owned(),
 		},
 		Project {
-			name: "🚧 [dynatos] Rust web framework".to_owned(),
-			link: "https://gitea.filipejr.com/zenithsiz/dynatos".to_owned(),
+			name:        "dynatos (🚧)".to_owned(),
+			description: "Rust web framework".to_owned(),
+			link:        "https://gitea.filipejr.com/zenithsiz/dynatos".to_owned(),
 		},
 		Project {
-			name: "[filipejr-homepage] This page".to_owned(),
-			link: THIS_WEBSITE.to_owned(),
+			name:        "filipejr-homepage".to_owned(),
+			description: "This page".to_owned(),
+			link:        THIS_WEBSITE.to_owned(),
 		},
 	];
 

@@ -144,25 +144,18 @@ fn Projects() -> web_sys::HtmlElement {
 		Ok::<_, AppError>(projects)
 	});
 
-	html::div()
-		.with_class("projects")
-		.with_title("Projects | Filipejr")
-		.with_dyn_child(move || match projects.borrow() {
-			Loadable::Empty => html::p().with_text("Loading..."),
-			Loadable::Err(err) => html::pre().with_text(format!("Unable to load projects:\n{err:?}")),
-			Loadable::Loaded(projects) => html::ul().with_class("project").with_children(
-				projects
-					.iter()
-					.map(|project| {
-						html::li().with_child(
-							html::a()
-								.with_attr("href", &project.link)
-								.with_text(project.name.as_str()),
-						)
-					})
-					.collect::<Vec<_>>(),
-			),
-		})
+	let projects = move || match projects.borrow() {
+		Loadable::Empty => html::p().with_text("Loading..."),
+		Loadable::Err(err) => html::pre().with_text(format!("Unable to load projects:\n{err:?}")),
+		Loadable::Loaded(projects) => html::ul().with_class("projects").with_children(
+			projects
+				.iter()
+				.map(|project| dynatos_html::html_file!("homepage-frontend/pages/projects/project.html"))
+				.collect::<Vec<_>>(),
+		),
+	};
+
+	dynatos_html::html_file!("homepage-frontend/pages/projects.html").with_title("Projects | Filipejr")
 }
 
 #[dynatos_builder::builder]

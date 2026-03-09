@@ -4,8 +4,9 @@
 #[derive(Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub struct Project {
-	pub name: String,
-	pub link: String,
+	pub name:        String,
+	pub description: String,
+	pub link:        String,
 }
 
 /// This website's source page
