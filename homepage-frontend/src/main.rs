@@ -26,7 +26,6 @@ use {
 	dynatos_reactive::{Signal, SignalBorrow, SignalGet, SignalGetCloned, SignalSet},
 	dynatos_router::Location,
 	dynatos_title::ObjectWithTitle,
-	homepage::Project,
 	std::rc::Rc,
 	strum::IntoEnumIterator,
 	tracing_subscriber::prelude::*,
@@ -137,7 +136,7 @@ fn Projects() -> web_sys::HtmlElement {
 		let projects = reqwest::get(projects_url)
 			.await
 			.context("Unable to get project")?
-			.json::<Vec<Project>>()
+			.json::<homepage::Projects>()
 			.await
 			.context("Unable to parse projects")?;
 
@@ -149,6 +148,7 @@ fn Projects() -> web_sys::HtmlElement {
 		Loadable::Err(err) => html::pre().with_text(format!("Unable to load projects:\n{err:?}")),
 		Loadable::Loaded(projects) => html::ul().with_class("projects").with_children(
 			projects
+				.projects
 				.iter()
 				.map(|project| dynatos_html::html_file!("homepage-frontend/pages/projects/project.html"))
 				.collect::<Vec<_>>(),

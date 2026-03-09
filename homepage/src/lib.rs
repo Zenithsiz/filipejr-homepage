@@ -1,5 +1,12 @@
 //! Homepage
 
+/// ProjectS
+#[derive(Clone, Debug)]
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Projects {
+	pub projects: Vec<Project>,
+}
+
 /// Project
 #[derive(Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]

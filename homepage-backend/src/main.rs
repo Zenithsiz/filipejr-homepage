@@ -12,7 +12,7 @@ use {
 		http::StatusCode,
 		response::IntoResponse,
 	},
-	homepage::{Project, THIS_WEBSITE},
+	homepage::Projects,
 	std::{
 		io,
 		net::{IpAddr, Ipv4Addr, SocketAddr},
@@ -82,36 +82,14 @@ async fn main() -> Result<(), AppError> {
 	Ok(())
 }
 
-async fn projects() -> Json<Vec<Project>> {
-	let projects = vec![
-		Project {
-			name:        "ddw3".to_owned(),
-			description: "Digimon world 2003 decompilation".to_owned(),
-			link:        "https://gitea.filipejr.com/zenithsiz/ddw3".to_owned(),
-		},
-		Project {
-			name:        "zbuild".to_owned(),
-			description: "Make-like build system".to_owned(),
-			link:        "https://gitea.filipejr.com/zenithsiz/zbuild".to_owned(),
-		},
-		Project {
-			name:        "zsw".to_owned(),
-			description: "Zenithsiz's scrolling wallpaper".to_owned(),
-			link:        "https://gitea.filipejr.com/zenithsiz/zsw".to_owned(),
-		},
-		Project {
-			name:        "dynatos (🚧)".to_owned(),
-			description: "Rust web framework".to_owned(),
-			link:        "https://gitea.filipejr.com/zenithsiz/dynatos".to_owned(),
-		},
-		Project {
-			name:        "filipejr-homepage".to_owned(),
-			description: "This page".to_owned(),
-			link:        THIS_WEBSITE.to_owned(),
-		},
-	];
+async fn projects(State(config): State<Arc<Config>>) -> Result<Json<Projects>, ReqError> {
+	let projects_path = config.resources.join("projects.toml");
+	let projects = fs::read_to_string(projects_path)
+		.await
+		.context("Unable to read projects")?;
+	let projects = toml::from_str(&projects).context("Unable to parse projects")?;
 
-	Json(projects)
+	Ok(Json(projects))
 }
 
 #[derive(Debug)]
