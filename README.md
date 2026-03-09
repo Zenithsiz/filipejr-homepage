@@ -13,24 +13,22 @@ The backend is a simple rest server, serving mostly json.
 
 # Running it
 
-To run the project, you can run the [scripts/run.sh](scripts/run.sh) script.
-This will start the backend and frontend in parallel.
-
-You may also run the [backend](scripts/run-backend.sh) or [frontend](scripts/run-frontend.sh) scripts separately:
+To run the project, you can use [`zbuild`](github.com/Zenithsiz/zbuild) with the `run` target, which will run both the frontend and backend.
 
 ```sh
-# Note: Don't `cd` into scripts to run them, run them from the project root.
-scripts/run.sh
+zbuild run
 ```
+
+You may also run the backend or frontend separately using the `run_backend` and `run_frontend` rules, respectively.
 
 # Deployment
 
-To deploy the project, you can run the [scripts/deploy.sh](scripts/deploy.sh) script.
+To deploy the project, you can run the `deploy` rule.
 This will deploy both the frontend (static html) as well as the backend (debian binary).
 In the case of the backend, the systemd unit responsible for running it will be restarted.
 
-You may also deploy the [backend](scripts/deploy-backend.sh) or [frontend](scripts/deploy-frontend.sh) scripts separately:
-
 ```sh
-scripts/deploy.sh
+zbuild deploy
 ```
+
+You may also deploy the backend or frontend separately using the `deploy_backend` and `deploy_frontend` rules, respectively.
