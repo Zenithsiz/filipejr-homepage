@@ -188,7 +188,7 @@ fn CV() -> web_sys::HtmlElement {
 			#[cloned(cur_lang)]
 			html::button()
 				.with_text(display)
-				.with_event_listener::<ev::Click>(move |_| cur_lang.set(lang))
+				.with_event_listener::<ev!(click)>(move |_| cur_lang.set(lang))
 		})
 		.collect::<Vec<_>>();
 	let lang_selector = html::div().with_class("lang-selector").with_children(langs_selector);

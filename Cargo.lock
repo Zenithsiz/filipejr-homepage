@@ -12,12 +12,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "anyhow"
-version = "1.0.102"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
-
-[[package]]
 name = "app-error"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -199,6 +193,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "convert_case"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "affbf0190ed2caf063e3def54ff444b449371d55c58e513a95ab98eca50adb49"
+dependencies = [
+ "unicode-segmentation",
+]
+
+[[package]]
 name = "core-foundation"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -239,7 +242,7 @@ version = "2.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb"
 dependencies = [
- "convert_case",
+ "convert_case 0.10.0",
  "proc-macro2",
  "quote",
  "rustc_version",
@@ -289,7 +292,7 @@ dependencies = [
 [[package]]
 name = "dynatos"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
  "duplicate",
  "dynatos-context",
@@ -308,7 +311,7 @@ dependencies = [
 [[package]]
 name = "dynatos-builder"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
  "dynatos-builder-macros",
 ]
@@ -316,9 +319,9 @@ dependencies = [
 [[package]]
 name = "dynatos-builder-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "convert_case",
+ "convert_case 0.11.0",
  "quote",
  "syn",
 ]
@@ -326,14 +329,13 @@ dependencies = [
 [[package]]
 name = "dynatos-context"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 
 [[package]]
 name = "dynatos-html"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
  "duplicate",
  "dynatos-html-macros",
  "dynatos-util",
@@ -348,7 +350,7 @@ dependencies = [
 [[package]]
 name = "dynatos-html-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
  "dynatos-html-parser",
  "itertools",
@@ -361,30 +363,29 @@ dependencies = [
 [[package]]
 name = "dynatos-html-parser"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
+ "thiserror 2.0.18",
  "unicode-xid",
 ]
 
 [[package]]
 name = "dynatos-loadable"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
  "duplicate",
  "dynatos-reactive",
  "dynatos-util",
  "extend",
  "tracing",
- "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
+ "zutil-cloned",
 ]
 
 [[package]]
 name = "dynatos-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
  "derive_utils",
  "quote",
@@ -394,7 +395,7 @@ dependencies = [
 [[package]]
 name = "dynatos-reactive"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -403,23 +404,20 @@ dependencies = [
  "extend",
  "futures",
  "itertools",
- "parking_lot",
  "petgraph",
  "pin-project",
  "priority-queue",
  "scopeguard",
- "tokio",
  "tracing",
  "wasm-bindgen-futures",
- "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
+ "zutil-cloned",
 ]
 
 [[package]]
 name = "dynatos-router"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
  "duplicate",
  "dynatos-context",
  "dynatos-html",
@@ -433,15 +431,14 @@ dependencies = [
  "url",
  "wasm-bindgen",
  "web-sys",
- "zutil-cloned 0.1.0 (git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f)",
+ "zutil-cloned",
 ]
 
 [[package]]
 name = "dynatos-title"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
  "duplicate",
  "dynatos-html",
  "dynatos-reactive",
@@ -456,9 +453,8 @@ dependencies = [
 [[package]]
 name = "dynatos-util"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=055af457d396619cfad4d89eb5e54540389027d3#055af457d396619cfad4d89eb5e54540389027d3"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
 dependencies = [
- "anyhow",
  "duplicate",
  "extend",
 ]
@@ -746,7 +742,7 @@ dependencies = [
  "url",
  "wasm-bindgen",
  "web-sys",
- "zutil-cloned 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "zutil-cloned",
 ]
 
 [[package]]
@@ -2671,15 +2667,6 @@ name = "zutil-cloned"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2c735d6a4ffcc2f59af6177967ee0e25e9938411d5137ae421bd16e1524f2eb"
-dependencies = [
- "quote",
- "syn",
-]
-
-[[package]]
-name = "zutil-cloned"
-version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/zutil?rev=978fa5df733d59fc691812ce2fa6072bf901dc7f#978fa5df733d59fc691812ce2fa6072bf901dc7f"
 dependencies = [
  "quote",
  "syn",
