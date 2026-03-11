@@ -292,7 +292,7 @@ dependencies = [
 [[package]]
 name = "dynatos"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "dynatos-context",
@@ -311,7 +311,7 @@ dependencies = [
 [[package]]
 name = "dynatos-builder"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "dynatos-builder-macros",
 ]
@@ -319,7 +319,7 @@ dependencies = [
 [[package]]
 name = "dynatos-builder-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "convert_case 0.11.0",
  "quote",
@@ -329,19 +329,21 @@ dependencies = [
 [[package]]
 name = "dynatos-context"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 
 [[package]]
 name = "dynatos-html"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "dynatos-html-macros",
+ "dynatos-html-parser",
  "dynatos-util",
  "extend",
  "itertools",
  "js-sys",
+ "thiserror 2.0.18",
  "tracing",
  "wasm-bindgen",
  "web-sys",
@@ -350,7 +352,7 @@ dependencies = [
 [[package]]
 name = "dynatos-html-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "dynatos-html-parser",
  "itertools",
@@ -363,7 +365,7 @@ dependencies = [
 [[package]]
 name = "dynatos-html-parser"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "thiserror 2.0.18",
  "unicode-xid",
@@ -372,7 +374,7 @@ dependencies = [
 [[package]]
 name = "dynatos-loadable"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "dynatos-reactive",
@@ -385,7 +387,7 @@ dependencies = [
 [[package]]
 name = "dynatos-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "derive_utils",
  "quote",
@@ -395,7 +397,7 @@ dependencies = [
 [[package]]
 name = "dynatos-reactive"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -416,7 +418,7 @@ dependencies = [
 [[package]]
 name = "dynatos-router"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "dynatos-context",
@@ -437,7 +439,7 @@ dependencies = [
 [[package]]
 name = "dynatos-title"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "dynatos-html",
@@ -453,7 +455,7 @@ dependencies = [
 [[package]]
 name = "dynatos-util"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=82b9033dc18338a875e398f3b036c938eeaa7d23#82b9033dc18338a875e398f3b036c938eeaa7d23"
+source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
 dependencies = [
  "duplicate",
  "extend",
@@ -1047,9 +1049,9 @@ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
 name = "libc"
-version = "0.2.182"
+version = "0.2.183"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
+checksum = "b5b646652bf6661599e1da8901b3b9522896f01e736bad5f723fe7a3a27f899d"
 
 [[package]]
 name = "litemap"
@@ -1282,9 +1284,9 @@ dependencies = [
 
 [[package]]
 name = "quinn-proto"
-version = "0.11.13"
+version = "0.11.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f1906b49b0c3bc04b5fe5d86a77925ae6524a19b816ae38ce1e426255f1d8a31"
+checksum = "434b42fec591c96ef50e21e886936e66d3cc3f737104fdb9b737c40ffb94c098"
 dependencies = [
  "aws-lc-rs",
  "bytes",
@@ -1553,9 +1555,9 @@ dependencies = [
 
 [[package]]
 name = "schannel"
-version = "0.1.28"
+version = "0.1.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "891d81b926048e76efe18581bf793546b4c0eaf8448d72be8de2bbee5fd166e1"
+checksum = "91c1b7e4904c873ef0710c1f407dde2e6287de2bebc1bbbf7d430bb7cbffd939"
 dependencies = [
  "windows-sys 0.61.2",
 ]
@@ -1709,12 +1711,12 @@ checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
 
 [[package]]
 name = "socket2"
-version = "0.6.2"
+version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "86f4aa3ad99f2088c990dfa82d367e19cb29268ed67c574d10d0a4bfe71f07e0"
+checksum = "3a766e1110788c36f4fa1c2b71b387a7815aa65f88ce0229841826633d93723e"
 dependencies = [
  "libc",
- "windows-sys 0.60.2",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -1929,9 +1931,9 @@ dependencies = [
 
 [[package]]
 name = "toml"
-version = "0.9.12+spec-1.1.0"
+version = "1.0.6+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf92845e79fc2e2def6a5d828f0801e29a2f8acc037becc5ab08595c7d5e9863"
+checksum = "399b1124a3c9e16766831c6bba21e50192572cdd98706ea114f9502509686ffc"
 dependencies = [
  "indexmap",
  "serde_core",
@@ -1944,9 +1946,9 @@ dependencies = [
 
 [[package]]
 name = "toml_datetime"
-version = "0.7.5+spec-1.1.0"
+version = "1.0.0+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92e1cfed4a3038bc5a127e35a2d360f145e1f4b971b551a2ba5fd7aedf7e1347"
+checksum = "32c2555c699578a4f59f0cc68e5116c8d7cabbd45e1409b989d4be085b53f13e"
 dependencies = [
  "serde_core",
 ]
@@ -2537,9 +2539,9 @@ checksum = "d6bbff5f0aada427a1e5a6da5f1f98158182f26556f345ac9e04d36d0ebed650"
 
 [[package]]
 name = "winnow"
-version = "0.7.14"
+version = "0.7.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a5364e9d77fcdeeaa6062ced926ee3381faa2ee02d3eb83a5c27a8825540829"
+checksum = "df79d97927682d2fd8adb29682d1140b343be4ac0f08fd68b7765d9c059d3945"
 
 [[package]]
 name = "wit-bindgen"
@@ -2578,18 +2580,18 @@ dependencies = [
 
 [[package]]
 name = "zerocopy"
-version = "0.8.40"
+version = "0.8.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a789c6e490b576db9f7e6b6d661bcc9799f7c0ac8352f56ea20193b2681532e5"
+checksum = "f2578b716f8a7a858b7f02d5bd870c14bf4ddbbcf3a4c05414ba6503640505e3"
 dependencies = [
  "zerocopy-derive",
 ]
 
 [[package]]
 name = "zerocopy-derive"
-version = "0.8.40"
+version = "0.8.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f65c489a7071a749c849713807783f70672b28094011623e200cb86dcb835953"
+checksum = "7e6cc098ea4d3bd6246687de65af3f920c430e236bee1e3bf2e441463f08a02f"
 dependencies = [
  "proc-macro2",
  "quote",
