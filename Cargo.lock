@@ -290,28 +290,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "dynatos"
-version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
-dependencies = [
- "duplicate",
- "dynatos-context",
- "dynatos-html",
- "dynatos-macros",
- "dynatos-reactive",
- "dynatos-router",
- "dynatos-util",
- "extend",
- "js-sys",
- "tracing",
- "wasm-bindgen",
- "web-sys",
-]
-
-[[package]]
 name = "dynatos-builder"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "dynatos-builder-macros",
 ]
@@ -319,7 +300,7 @@ dependencies = [
 [[package]]
 name = "dynatos-builder-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "convert_case 0.11.0",
  "quote",
@@ -329,12 +310,12 @@ dependencies = [
 [[package]]
 name = "dynatos-context"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 
 [[package]]
 name = "dynatos-html"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "duplicate",
  "dynatos-html-macros",
@@ -352,7 +333,7 @@ dependencies = [
 [[package]]
 name = "dynatos-html-macros"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "dynatos-html-parser",
  "itertools",
@@ -365,16 +346,45 @@ dependencies = [
 [[package]]
 name = "dynatos-html-parser"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "thiserror 2.0.18",
  "unicode-xid",
 ]
 
 [[package]]
+name = "dynatos-html-reactive"
+version = "0.1.0"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
+dependencies = [
+ "duplicate",
+ "dynatos-context",
+ "dynatos-html",
+ "dynatos-html-reactive-macros",
+ "dynatos-reactive",
+ "dynatos-router",
+ "dynatos-util",
+ "extend",
+ "js-sys",
+ "tracing",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
+name = "dynatos-html-reactive-macros"
+version = "0.1.0"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
+dependencies = [
+ "derive_utils",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "dynatos-loadable"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "duplicate",
  "dynatos-reactive",
@@ -385,19 +395,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "dynatos-macros"
-version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
-dependencies = [
- "derive_utils",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "dynatos-reactive"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -418,7 +418,7 @@ dependencies = [
 [[package]]
 name = "dynatos-router"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "duplicate",
  "dynatos-context",
@@ -439,7 +439,7 @@ dependencies = [
 [[package]]
 name = "dynatos-title"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "duplicate",
  "dynatos-html",
@@ -455,7 +455,7 @@ dependencies = [
 [[package]]
 name = "dynatos-util"
 version = "0.1.0"
-source = "git+ssh://github.com/Zenithsiz/dynatos?rev=2bbc81fc339609262ab38404d0523671d3b14724#2bbc81fc339609262ab38404d0523671d3b14724"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=60862eac513dfcc7b9208299279a4e1fff55b510#60862eac513dfcc7b9208299279a4e1fff55b510"
 dependencies = [
  "duplicate",
  "extend",
@@ -726,10 +726,10 @@ dependencies = [
  "app-error",
  "console_error_panic_hook",
  "derive_more",
- "dynatos",
  "dynatos-builder",
  "dynatos-context",
  "dynatos-html",
+ "dynatos-html-reactive",
  "dynatos-loadable",
  "dynatos-reactive",
  "dynatos-router",

@@ -12,7 +12,6 @@
 // Imports
 use {
 	app_error::{AppError, Context},
-	dynatos::{ElementWithDynAttr, NodeWithDynChild, ObjectAttachContext},
 	dynatos_html::{
 		ElementWithAttr,
 		ElementWithClass,
@@ -22,6 +21,7 @@ use {
 		ev,
 		html,
 	},
+	dynatos_html_reactive::{ElementWithDynAttr, NodeWithDynChild, ObjectAttachContext},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::{Signal, SignalBorrow, SignalGet, SignalGetCloned, SignalSet},
 	dynatos_router::Location,
