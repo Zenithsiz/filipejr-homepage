@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 
 serde = { features = ["derive"], workspace = true }
+url   = { features = ["serde"], workspace = true }

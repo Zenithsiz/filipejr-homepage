@@ -12,7 +12,7 @@ use {
 		http::StatusCode,
 		response::IntoResponse,
 	},
-	homepage::Projects,
+	homepage::{ExternalLinks, Projects},
 	std::{
 		io,
 		net::{IpAddr, Ipv4Addr, SocketAddr},
@@ -67,6 +67,7 @@ async fn main() -> Result<(), AppError> {
 		use axum::routing::get;
 		axum::Router::new()
 			.route("/projects", get(self::projects))
+			.route("/external-links", get(self::external_links))
 			.route("/cv.pdf", get(self::cv))
 			.with_state(Arc::clone(&config))
 	};
@@ -80,6 +81,16 @@ async fn main() -> Result<(), AppError> {
 		.context("Unable to start http server")?;
 
 	Ok(())
+}
+
+async fn external_links(State(config): State<Arc<Config>>) -> Result<Json<ExternalLinks>, ReqError> {
+	let external_links_path = config.resources.join("external-links.toml");
+	let external_links = fs::read_to_string(external_links_path)
+		.await
+		.context("Unable to read external links")?;
+	let external_links = toml::from_str(&external_links).context("Unable to parse external links")?;
+
+	Ok(Json(external_links))
 }
 
 async fn projects(State(config): State<Arc<Config>>) -> Result<Json<Projects>, ReqError> {

@@ -1,6 +1,24 @@
 //! Homepage
 
-/// ProjectS
+// Imports
+use url::Url;
+
+/// ExternalLinks
+#[derive(Clone, Debug)]
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ExternalLinks {
+	pub links: Vec<ExternalLink>,
+}
+
+/// ExternalLink
+#[derive(Clone, Debug)]
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ExternalLink {
+	pub location: Url,
+	pub text:     String,
+}
+
+/// Projects
 #[derive(Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub struct Projects {

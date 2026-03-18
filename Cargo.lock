@@ -702,6 +702,7 @@ name = "homepage"
 version = "0.1.0"
 dependencies = [
  "serde",
+ "url",
 ]
 
 [[package]]
@@ -2130,6 +2131,7 @@ dependencies = [
  "idna",
  "percent-encoding",
  "serde",
+ "serde_derive",
 ]
 
 [[package]]
