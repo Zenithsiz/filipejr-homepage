@@ -10,32 +10,21 @@
 )]
 
 // Modules
+mod pages;
 mod util;
 
 // Imports
 use {
 	self::util::NodeWithCssLink,
-	app_error::{AppError, Context},
-	dynatos_html::{
-		ElementWithAttr,
-		ElementWithClass,
-		EventTargetWithListener,
-		NodeWithChildren,
-		NodeWithText,
-		ev,
-		html,
-	},
-	dynatos_html_reactive::{ElementWithDynAttr, NodeWithDynChild, ObjectAttachContext},
-	dynatos_loadable::{Loadable, LoadableSignal},
-	dynatos_reactive::{Signal, SignalBorrow, SignalGet, SignalGetCloned, SignalSet},
+	app_error::AppError,
+	dynatos_html::{ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText, html},
+	dynatos_html_reactive::{NodeWithDynChild, ObjectAttachContext},
+	dynatos_reactive::SignalGetCloned,
 	dynatos_router::Location,
-	dynatos_title::ObjectWithTitle,
 	std::rc::Rc,
-	strum::IntoEnumIterator,
 	tracing_subscriber::prelude::*,
 	url::Url,
 	web_sys::HtmlElement,
-	zutil_cloned::cloned,
 };
 
 fn main() {
@@ -124,101 +113,10 @@ fn render_route() -> Option<HtmlElement> {
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
-		"" => Some(Home::new()),
-		"/projects" => Some(Projects::new()),
-		"/cv" => Some(CV::new()),
-		"/about-me" => Some(AboutMe::new()),
-		_ => Some(NotFound::new()),
+		"" => Some(pages::Home::new()),
+		"/projects" => Some(pages::Projects::new()),
+		"/cv" => Some(pages::CV::new()),
+		"/about-me" => Some(pages::AboutMe::new()),
+		_ => Some(pages::NotFound::new()),
 	}
-}
-
-
-#[dynatos_builder::builder]
-fn Home() -> web_sys::HtmlElement {
-	dynatos_html::html_file!("homepage-frontend/pages/home.html").with_title("Home | Filipejr")
-}
-
-#[dynatos_builder::builder]
-fn Projects() -> web_sys::HtmlElement {
-	let projects = LoadableSignal::new(|| async move {
-		let backend_url = dynatos_context::expect_cloned::<BackendUrl>();
-		let projects_url = backend_url.join("projects").context("Unable to create url")?;
-		let projects = reqwest::get(projects_url)
-			.await
-			.context("Unable to get project")?
-			.json::<homepage::Projects>()
-			.await
-			.context("Unable to parse projects")?;
-
-		Ok::<_, AppError>(projects)
-	});
-
-	let projects = move || match projects.borrow() {
-		Loadable::Empty => html::p().with_text("Loading..."),
-		Loadable::Err(err) => html::pre().with_text(format!("Unable to load projects:\n{err:?}")),
-		Loadable::Loaded(projects) => html::ul().with_class("projects").with_children(
-			projects
-				.projects
-				.iter()
-				.map(|project| dynatos_html::html_file!("homepage-frontend/pages/projects/project.html"))
-				.collect::<Vec<_>>(),
-		),
-	};
-
-	dynatos_html::html_file!("homepage-frontend/pages/projects.html").with_title("Projects | Filipejr")
-}
-
-#[dynatos_builder::builder]
-fn AboutMe() -> web_sys::HtmlElement {
-	use homepage::THIS_WEBSITE;
-	dynatos_html::html_file!("homepage-frontend/pages/about-me.html").with_title("About me | Filipejr")
-}
-
-#[dynatos_builder::builder]
-fn CV() -> web_sys::HtmlElement {
-	#[derive(PartialEq, Eq, Clone, Copy, Debug)]
-	#[derive(derive_more::Display)]
-	#[derive(strum::EnumIter)]
-	enum Lang {
-		#[display("en")]
-		En,
-		#[display("pt")]
-		Pt,
-	}
-
-	let cur_lang = Signal::new(Lang::En);
-
-	let langs_selector = Lang::iter()
-		.map(|lang| {
-			let display = match lang {
-				Lang::En => "English",
-				Lang::Pt => "Português",
-			};
-
-			#[cloned(cur_lang)]
-			html::button()
-				.with_text(display)
-				.with_event_listener::<ev!(click)>(move |_| cur_lang.set(lang))
-		})
-		.collect::<Vec<_>>();
-	let lang_selector = html::div().with_class("lang-selector").with_children(langs_selector);
-
-	let cvs = Lang::iter()
-		.map(|lang| {
-			let src = format!("/backend/cv.pdf?lang={lang}");
-
-			#[cloned(cur_lang)]
-			dynatos_html::html_file!("homepage-frontend/pages/cv/pdf.html")
-				.with_dyn_attr_if("hidden", move || cur_lang.get() != lang)
-		})
-		.collect::<Vec<_>>();
-
-	let cvs = html::div().with_class("cvs").with_children(cvs);
-
-	dynatos_html::html_file!("homepage-frontend/pages/cv.html").with_title("CV | Filipejr")
-}
-
-#[dynatos_builder::builder]
-fn NotFound() -> web_sys::HtmlElement {
-	html::p().with_title("Not found | Filipejr").with_text("Unknown page")
 }
