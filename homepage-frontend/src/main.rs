@@ -10,21 +10,20 @@
 )]
 
 // Modules
+mod components;
 mod pages;
 mod util;
 
 // Imports
 use {
-	self::util::NodeWithCssLink,
 	app_error::AppError,
-	dynatos_html::{ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText, html},
+	dynatos_html::{ElementWithClass, NodeWithChildren, html},
 	dynatos_html_reactive::{NodeWithDynChild, ObjectAttachContext},
 	dynatos_reactive::SignalGetCloned,
 	dynatos_router::Location,
 	std::rc::Rc,
 	tracing_subscriber::prelude::*,
 	url::Url,
-	web_sys::HtmlElement,
 };
 
 fn main() {
@@ -70,44 +69,15 @@ fn run() -> Result<(), AppError> {
 	body.with_child(
 		html::div()
 			.with_class("app")
-			.with_child(self::render_nav())
+			.with_child(components::Sidebar::new())
 			.with_child(html::div().with_class("body").with_dyn_child(self::render_route)),
 	);
 
 	Ok(())
 }
 
-fn render_nav() -> HtmlElement {
-	let local = [
-		("/", "Home"),
-		("/projects", "Projects"),
-		("/cv", "CV"),
-		("/about-me", "About me"),
-	];
-	let external = [("https://gitea.filipejr.com", "Gitea")];
 
-	html::nav()
-		.with_css_link("/css/sidebar.css")
-		.with_class("sidebar")
-		.with_children([
-			html::ul().with_class("local").with_children(
-				local
-					.iter()
-					.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
-					.collect::<Vec<_>>(),
-			),
-			html::ul().with_class("external").with_children(
-				external
-					.iter()
-					.map(|&(location, text)| {
-						html::li().with_child(html::a().with_attr("href", location).with_text(text))
-					})
-					.collect::<Vec<_>>(),
-			),
-		])
-}
-
-fn render_route() -> Option<HtmlElement> {
+fn render_route() -> Option<web_sys::HtmlElement> {
 	let location = dynatos_context::with_expect::<Location, _, _>(|location| location.get_cloned());
 
 	tracing::debug!(%location, "Rendering route");
