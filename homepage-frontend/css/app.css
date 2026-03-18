@@ -16,4 +16,11 @@
 	& > :last-child {
 		border-top-right-radius: var(--spacing);
 	}
+
+	& > .body {
+		background-color: var(--color-bg-dark1);
+
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
 }

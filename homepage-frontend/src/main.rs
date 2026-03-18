@@ -69,10 +69,9 @@ fn run() -> Result<(), AppError> {
 	// And attach our app to the body
 	body.with_child(
 		html::div()
-			.with_css_link("/css/app.css")
 			.with_class("app")
 			.with_child(self::render_nav())
-			.with_child(html::div().with_class("main").with_dyn_child(self::render_route)),
+			.with_child(html::div().with_class("body").with_dyn_child(self::render_route)),
 	);
 
 	Ok(())
