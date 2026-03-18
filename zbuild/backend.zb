@@ -8,11 +8,15 @@ rule backend_run {
 	};
 }
 
-rule backend_deploy {
+rule backend_build {
 	exec "cargo" "build"
 		"--release"
 		"--target" "x86_64-unknown-linux-musl"
 		"--package" "homepage-backend";
+}
+
+rule backend_deploy {
+	dep backend_build;
 
 	exec {
 		stdout deb_path;

@@ -3,10 +3,14 @@ rule frontend_run {
 		"--config" "homepage-frontend/Trunk.toml";
 }
 
-rule frontend_deploy {
+rule frontend_build {
 	exec "trunk" "build"
 		"--release"
 		"--config" "homepage-frontend/Trunk.toml";
+}
+
+rule frontend_deploy {
+	dep frontend_build;
 
 	exec "rsync"
 		"--recursive"

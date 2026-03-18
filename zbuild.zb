@@ -8,6 +8,11 @@ rule run {
 	dep rule backend_run;
 }
 
+rule build {
+	dep rule frontend_build;
+	dep rule backend_build;
+}
+
 rule deploy {
 	dep rule frontend_deploy;
 	dep rule backend_deploy;
