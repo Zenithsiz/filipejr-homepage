@@ -4,11 +4,11 @@ include "zbuild/backend.zb";
 
 
 rule run {
-	dep rule run_frontend;
-	dep rule run_backend;
+	dep rule frontend_run;
+	dep rule backend_run;
 }
 
 rule deploy {
-	dep rule deploy_frontend;
-	dep rule deploy_backend;
+	dep rule frontend_deploy;
+	dep rule backend_deploy;
 }

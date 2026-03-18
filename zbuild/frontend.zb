@@ -1,9 +1,9 @@
-rule run_frontend {
+rule frontend_run {
 	exec "trunk" "serve"
 		"--config" "homepage-frontend/Trunk.toml";
 }
 
-rule deploy_frontend {
+rule frontend_deploy {
 	exec "trunk" "build"
 		"--release"
 		"--config" "homepage-frontend/Trunk.toml";

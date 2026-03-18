@@ -19,7 +19,7 @@ To run the project, you can use [`zbuild`](github.com/Zenithsiz/zbuild) with the
 zbuild run
 ```
 
-You may also run the backend or frontend separately using the `run_backend` and `run_frontend` rules, respectively.
+You may also run the backend or frontend separately using the `backend_run` and `frontend_run` rules, respectively.
 
 # Deployment
 
@@ -31,4 +31,4 @@ In the case of the backend, the systemd unit responsible for running it will be 
 zbuild deploy
 ```
 
-You may also deploy the backend or frontend separately using the `deploy_backend` and `deploy_frontend` rules, respectively.
+You may also deploy the backend or frontend separately using the `backend_deploy` and `frontend_deploy` rules, respectively.
