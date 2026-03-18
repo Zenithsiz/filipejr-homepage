@@ -2,6 +2,8 @@
 
 .projects-page {
 	.projects {
+		flex-shrink: 1;
+
 		padding-top: 0.5rem;
 
 		display: flex;
