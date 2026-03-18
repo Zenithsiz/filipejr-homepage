@@ -10,3 +10,7 @@ backend = "http://localhost:8081/"
 [[hooks]]
 stage   = "build"
 command = "./build-css.sh"
+
+[[hooks]]
+stage   = "post_build"
+command = "./optimize-wasm.sh"
