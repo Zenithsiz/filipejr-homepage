@@ -1,0 +1,19 @@
+.app {
+	flex-direction: row;
+
+	color: var(--color-text);
+	background-color: var(--color-bg);
+
+	--spacing: 0.5rem;
+	padding-left: var(--spacing);
+	padding-right: var(--spacing);
+	padding-top: var(--spacing);
+
+	& > :first-child {
+		border-top-left-radius: var(--spacing);
+	}
+
+	& > :last-child {
+		border-top-right-radius: var(--spacing);
+	}
+}

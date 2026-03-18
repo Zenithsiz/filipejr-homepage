@@ -27,6 +27,7 @@ dynatos-reactive         = { git = "https://github.com/Zenithsiz/dynatos", rev =
 dynatos-router           = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
 dynatos-title            = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
 dynatos-util             = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
+extend                   = "1.2.0"
 reqwest                  = "0.13.2"
 serde                    = "1.0.228"
 strum                    = "0.28.0"

@@ -8,5 +8,5 @@ rewrite = "/backend/"
 backend = "http://localhost:8081/"
 
 [[hooks]]
-stage   = "pre_build"
-command = "./compile_css.sh"
+stage   = "build"
+command = "./build-css.sh"

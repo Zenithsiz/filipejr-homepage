@@ -9,8 +9,12 @@
 	proc_macro_hygiene
 )]
 
+// Modules
+mod util;
+
 // Imports
 use {
+	self::util::NodeWithCssLink,
 	app_error::{AppError, Context},
 	dynatos_html::{
 		ElementWithAttr,
@@ -76,6 +80,7 @@ fn run() -> Result<(), AppError> {
 	// And attach our app to the body
 	body.with_child(
 		html::div()
+			.with_css_link("/css/app.css")
 			.with_class("app")
 			.with_child(self::render_nav())
 			.with_child(html::div().with_class("main").with_dyn_child(self::render_route)),
@@ -93,20 +98,25 @@ fn render_nav() -> HtmlElement {
 	];
 	let external = [("https://gitea.filipejr.com", "Gitea")];
 
-	html::nav().with_class("sidebar").with_children([
-		html::ul().with_class("local").with_children(
-			local
-				.iter()
-				.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
-				.collect::<Vec<_>>(),
-		),
-		html::ul().with_class("external").with_children(
-			external
-				.iter()
-				.map(|&(location, text)| html::li().with_child(html::a().with_attr("href", location).with_text(text)))
-				.collect::<Vec<_>>(),
-		),
-	])
+	html::nav()
+		.with_css_link("/css/sidebar.css")
+		.with_class("sidebar")
+		.with_children([
+			html::ul().with_class("local").with_children(
+				local
+					.iter()
+					.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
+					.collect::<Vec<_>>(),
+			),
+			html::ul().with_class("external").with_children(
+				external
+					.iter()
+					.map(|&(location, text)| {
+						html::li().with_child(html::a().with_attr("href", location).with_text(text))
+					})
+					.collect::<Vec<_>>(),
+			),
+		])
 }
 
 fn render_route() -> Option<HtmlElement> {

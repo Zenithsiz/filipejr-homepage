@@ -735,6 +735,7 @@ dependencies = [
  "dynatos-router",
  "dynatos-title",
  "dynatos-util",
+ "extend",
  "homepage",
  "reqwest",
  "strum",
