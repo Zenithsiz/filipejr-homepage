@@ -60,7 +60,7 @@ fn run() -> Result<(), AppError> {
 	// Build the backend url
 	// TODO: Should this be reactive?
 	let backend_url = location
-		.get_cloned_raw()
+		.get_cloned_no_dep()
 		.join("backend/")
 		.expect("Backend url was invalid");
 	body.attach_context(BackendUrl(Rc::new(backend_url)));

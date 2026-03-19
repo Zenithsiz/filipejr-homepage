@@ -18,15 +18,15 @@ app-error                = "0.1.0"
 axum                     = "0.8.8"
 console_error_panic_hook = "0.1.7"
 derive_more              = "2.1.1"
-dynatos-builder          = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-context          = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-html             = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-html-reactive    = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-loadable         = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-reactive         = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-router           = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-title            = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
-dynatos-util             = { git = "https://github.com/Zenithsiz/dynatos", rev = "60862eac513dfcc7b9208299279a4e1fff55b510" }
+dynatos-builder          = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-context          = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-html             = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-html-reactive    = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-loadable         = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-reactive         = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-router           = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-title            = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
+dynatos-util             = { git = "https://github.com/Zenithsiz/dynatos", rev = "c3f5c92734f6a73c7b0c39335029609dd8858b05" }
 extend                   = "1.2.0"
 reqwest                  = "0.13.2"
 serde                    = "1.0.228"
