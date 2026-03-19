@@ -10,7 +10,7 @@ rule frontend_build {
 }
 
 rule frontend_deploy {
-	dep frontend_build;
+	dep rule frontend_build;
 
 	exec "rsync"
 		"--recursive"

@@ -16,7 +16,7 @@ rule backend_build {
 }
 
 rule backend_deploy {
-	dep backend_build;
+	dep rule backend_build;
 
 	exec {
 		stdout deb_path;
