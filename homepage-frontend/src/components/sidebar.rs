@@ -2,10 +2,9 @@
 
 // Imports
 use {
-	crate::{BackendUrl, util::NodeWithCssLink},
+	crate::BackendUrl,
 	app_error::{AppError, Context},
-	dynatos_html::{ElementWithAttr, ElementWithClass, NodeWithChildren, NodeWithText, html},
-	dynatos_html_reactive::NodeWithDynChildren,
+	dynatos_html::{ElementWithAttr, NodeWithChildren, NodeWithText, html},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
 };
@@ -31,6 +30,11 @@ pub fn Sidebar() -> web_sys::HtmlElement {
 		Ok::<_, AppError>(external_links)
 	});
 
+	let local_links = local_links
+		.iter()
+		.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
+		.collect::<Vec<_>>();
+
 	let external_links = move || match external_links.borrow() {
 		Loadable::Empty => vec![html::p().with_text("Loading...")],
 		Loadable::Err(err) => vec![html::pre().with_text(format!("Unable to load projects:\n{err:?}"))],
@@ -47,16 +51,5 @@ pub fn Sidebar() -> web_sys::HtmlElement {
 			.collect::<Vec<_>>(),
 	};
 
-	html::nav()
-		.with_css_link("/css/components/sidebar.css")
-		.with_class("sidebar")
-		.with_children([
-			html::ul().with_class("local").with_children(
-				local_links
-					.iter()
-					.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
-					.collect::<Vec<_>>(),
-			),
-			html::ul().with_class("external").with_dyn_children(external_links),
-		])
+	dynatos_html::html_file!("homepage-frontend/html/components/sidebar.html")
 }
