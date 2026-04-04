@@ -735,6 +735,7 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "url",
+ "zutil-logger",
 ]
 
 [[package]]
@@ -2681,4 +2682,17 @@ checksum = "e2c735d6a4ffcc2f59af6177967ee0e25e9938411d5137ae421bd16e1524f2eb"
 dependencies = [
  "quote",
  "syn",
+]
+
+[[package]]
+name = "zutil-logger"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9c8dbf0e9190aded917d048533176339a10964c9fafee1735cf2110311322e50"
+dependencies = [
+ "duplicate",
+ "itertools",
+ "tracing",
+ "tracing-subscriber",
+ "zutil-cloned",
 ]

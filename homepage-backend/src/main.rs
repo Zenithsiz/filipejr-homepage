@@ -43,7 +43,7 @@ impl Default for Config {
 
 #[tokio::main]
 async fn main() -> Result<(), AppError> {
-	tracing_subscriber::fmt().init();
+	let _logger = zutil_logger::Logger::new();
 
 	// Read the config file
 	let config_file = Path::new("config.toml");
@@ -60,6 +60,7 @@ async fn main() -> Result<(), AppError> {
 		},
 		Err(err) => return Err(AppError::new(&err).context("Unable to read config file")),
 	};
+	tracing::debug!("Configuration: {config:?}");
 	let config = Arc::new(config);
 
 	// Then build the app
