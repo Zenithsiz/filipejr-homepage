@@ -2,10 +2,10 @@
 
 // Imports
 use {
-	dynatos_html::{ElementWithClass, EventTargetWithListener, NodeWithChildren, NodeWithText, ev, html},
-	dynatos_html_reactive::ElementWithDynAttr,
 	dynatos_reactive::{Signal, SignalGet, SignalSet},
-	dynatos_title::ObjectWithTitle,
+	dynatos_web::{ElementWithClass, EventTargetWithListener, NodeWithChildren, NodeWithText, ev, html},
+	dynatos_web_reactive::ElementWithDynAttr,
+	dynatos_web_title::ObjectWithTitle,
 	strum::IntoEnumIterator,
 	zutil_cloned::cloned,
 };
@@ -34,14 +34,14 @@ pub fn CV() -> web_sys::HtmlElement {
 			let src = format!("/backend/cv.pdf?lang={lang}");
 
 			#[cloned(cur_lang)]
-			dynatos_html::html_file!("homepage-frontend/html/pages/cv/pdf.html")
+			dynatos_web::html_file!("homepage-frontend/html/pages/cv/pdf.html")
 				.with_dyn_attr_if("hidden", move || cur_lang.get() != lang)
 		})
 		.collect::<Vec<_>>();
 
 	let cvs = html::div().with_class("cvs").with_children(cvs);
 
-	dynatos_html::html_file!("homepage-frontend/html/pages/cv.html").with_title("CV | Filipejr")
+	dynatos_web::html_file!("homepage-frontend/html/pages/cv.html").with_title("CV | Filipejr")
 }
 
 #[derive(PartialEq, Eq, Clone, Copy, Debug)]

@@ -13,13 +13,13 @@ console_error_panic_hook = { workspace = true }
 derive_more              = { features = ["full"], workspace = true }
 dynatos-builder          = { workspace = true }
 dynatos-context          = { workspace = true }
-dynatos-html             = { workspace = true }
-dynatos-html-reactive    = { workspace = true }
 dynatos-loadable         = { workspace = true }
 dynatos-reactive         = { workspace = true }
-dynatos-router           = { workspace = true }
-dynatos-title            = { workspace = true }
 dynatos-util             = { workspace = true }
+dynatos-web              = { workspace = true }
+dynatos-web-reactive     = { workspace = true }
+dynatos-web-router       = { workspace = true }
+dynatos-web-title        = { workspace = true }
 extend                   = { workspace = true }
 reqwest                  = { features = ["json"], workspace = true }
 strum                    = { features = ["derive"], workspace = true }

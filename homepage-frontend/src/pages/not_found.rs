@@ -2,8 +2,8 @@
 
 // Imports
 use {
-	dynatos_html::{NodeWithText, html},
-	dynatos_title::ObjectWithTitle,
+	dynatos_web::{NodeWithText, html},
+	dynatos_web_title::ObjectWithTitle,
 };
 
 #[dynatos_builder::builder]

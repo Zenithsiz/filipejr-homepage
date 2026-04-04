@@ -4,10 +4,10 @@
 use {
 	crate::BackendUrl,
 	app_error::{AppError, Context},
-	dynatos_html::{ElementWithClass, NodeWithChildren, NodeWithText, html},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
-	dynatos_title::ObjectWithTitle,
+	dynatos_web::{ElementWithClass, NodeWithChildren, NodeWithText, html},
+	dynatos_web_title::ObjectWithTitle,
 };
 
 #[dynatos_builder::builder]
@@ -32,10 +32,10 @@ pub fn Projects() -> web_sys::HtmlElement {
 			projects
 				.projects
 				.iter()
-				.map(|project| dynatos_html::html_file!("homepage-frontend/html/pages/projects/project.html"))
+				.map(|project| dynatos_web::html_file!("homepage-frontend/html/pages/projects/project.html"))
 				.collect::<Vec<_>>(),
 		),
 	};
 
-	dynatos_html::html_file!("homepage-frontend/html/pages/projects.html").with_title("Projects | Filipejr")
+	dynatos_web::html_file!("homepage-frontend/html/pages/projects.html").with_title("Projects | Filipejr")
 }

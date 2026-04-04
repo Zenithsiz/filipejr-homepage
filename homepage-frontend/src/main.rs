@@ -17,10 +17,10 @@ mod util;
 // Imports
 use {
 	app_error::AppError,
-	dynatos_html::{ElementWithClass, NodeWithChildren, html},
-	dynatos_html_reactive::{NodeWithDynChild, ObjectAttachContext},
 	dynatos_reactive::SignalGetCloned,
-	dynatos_router::Location,
+	dynatos_web::{ElementWithClass, NodeWithChildren, html},
+	dynatos_web_reactive::{NodeWithDynChild, ObjectAttachContext},
+	dynatos_web_router::Location,
 	std::rc::Rc,
 	tracing_subscriber::prelude::*,
 	url::Url,

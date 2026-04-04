@@ -4,9 +4,9 @@
 use {
 	crate::BackendUrl,
 	app_error::{AppError, Context},
-	dynatos_html::{ElementWithAttr, NodeWithChildren, NodeWithText, html},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
+	dynatos_web::{ElementWithAttr, NodeWithChildren, NodeWithText, html},
 };
 
 #[dynatos_builder::builder]
@@ -32,7 +32,7 @@ pub fn Sidebar() -> web_sys::HtmlElement {
 
 	let local_links = local_links
 		.iter()
-		.map(|&(location, text)| html::li().with_child(dynatos_router::anchor(location).with_text(text)))
+		.map(|&(location, text)| html::li().with_child(dynatos_web_router::anchor(location).with_text(text)))
 		.collect::<Vec<_>>();
 
 	let external_links = move || match external_links.borrow() {
@@ -51,5 +51,5 @@ pub fn Sidebar() -> web_sys::HtmlElement {
 			.collect::<Vec<_>>(),
 	};
 
-	dynatos_html::html_file!("homepage-frontend/html/components/sidebar.html")
+	dynatos_web::html_file!("homepage-frontend/html/components/sidebar.html")
 }
