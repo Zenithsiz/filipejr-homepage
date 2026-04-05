@@ -3,8 +3,7 @@
 // Imports
 use dynatos_web_title::ObjectWithTitle;
 
-#[dynatos_builder::builder]
-pub fn AboutMe() -> web_sys::HtmlElement {
+pub fn about_me() -> web_sys::HtmlElement {
 	use homepage::THIS_WEBSITE;
 	dynatos_web::html_file!("homepage-frontend/html/pages/about-me.html").with_title("About me | Filipejr")
 }

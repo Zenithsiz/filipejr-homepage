@@ -10,8 +10,7 @@ use {
 	zutil_cloned::cloned,
 };
 
-#[dynatos_builder::builder]
-pub fn CV() -> web_sys::HtmlElement {
+pub fn cv() -> web_sys::HtmlElement {
 	let cur_lang = Signal::new(Lang::En);
 
 	let langs_selector = Lang::iter()

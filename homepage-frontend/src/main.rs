@@ -69,12 +69,7 @@ fn run() -> Result<(), AppError> {
 	body.with_child(
 		html::div()
 			.with_class("app")
-			.with_child(
-				components::Sidebar::builder()
-					.location(location.clone())
-					.backend_url(backend_url.clone())
-					.build(),
-			)
+			.with_child(components::sidebar(location.clone(), backend_url.clone()))
 			.with_child(
 				html::div()
 					.with_class("body")
@@ -91,10 +86,10 @@ fn render_route(location: &Location, backend_url: BackendUrl) -> Option<web_sys:
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
-		"" => Some(pages::Home::new()),
-		"/projects" => Some(pages::Projects::builder().backend_url(backend_url).build()),
-		"/cv" => Some(pages::CV::new()),
-		"/about-me" => Some(pages::AboutMe::new()),
-		_ => Some(pages::NotFound::new()),
+		"" => Some(pages::home()),
+		"/projects" => Some(pages::projects(backend_url)),
+		"/cv" => Some(pages::cv()),
+		"/about-me" => Some(pages::about_me()),
+		_ => Some(pages::not_found()),
 	}
 }

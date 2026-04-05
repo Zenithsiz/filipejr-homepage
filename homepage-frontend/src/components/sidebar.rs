@@ -11,8 +11,7 @@ use {
 	zutil_cloned::cloned,
 };
 
-#[dynatos_builder::builder]
-pub fn Sidebar(location: Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
+pub fn sidebar(location: Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
 	let local_links = [
 		("/", "Home"),
 		("/projects", "Projects"),

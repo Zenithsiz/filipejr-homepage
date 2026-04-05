@@ -11,8 +11,7 @@ use {
 	zutil_cloned::cloned,
 };
 
-#[dynatos_builder::builder]
-pub fn Projects(backend_url: BackendUrl) -> web_sys::HtmlElement {
+pub fn projects(backend_url: BackendUrl) -> web_sys::HtmlElement {
 	let projects = LoadableSignal::new(move || {
 		#[cloned(backend_url)]
 		async move {

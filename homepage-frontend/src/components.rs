@@ -4,4 +4,4 @@
 mod sidebar;
 
 // Exports
-pub use self::sidebar::Sidebar;
+pub use self::sidebar::sidebar;
