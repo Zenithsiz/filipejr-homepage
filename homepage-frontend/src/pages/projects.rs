@@ -8,21 +8,24 @@ use {
 	dynatos_reactive::SignalBorrow,
 	dynatos_web::{ElementWithClass, NodeWithChildren, NodeWithText, html},
 	dynatos_web_title::ObjectWithTitle,
+	zutil_cloned::cloned,
 };
 
 #[dynatos_builder::builder]
-pub fn Projects() -> web_sys::HtmlElement {
-	let projects = LoadableSignal::new(|| async move {
-		let backend_url = dynatos_context::expect_cloned::<BackendUrl>();
-		let projects_url = backend_url.join("projects").context("Unable to create url")?;
-		let projects = reqwest::get(projects_url)
-			.await
-			.context("Unable to get project")?
-			.json::<homepage::Projects>()
-			.await
-			.context("Unable to parse projects")?;
+pub fn Projects(backend_url: BackendUrl) -> web_sys::HtmlElement {
+	let projects = LoadableSignal::new(move || {
+		#[cloned(backend_url)]
+		async move {
+			let projects_url = backend_url.join("projects").context("Unable to create url")?;
+			let projects = reqwest::get(projects_url)
+				.await
+				.context("Unable to get project")?
+				.json::<homepage::Projects>()
+				.await
+				.context("Unable to parse projects")?;
 
-		Ok::<_, AppError>(projects)
+			Ok::<_, AppError>(projects)
+		}
 	});
 
 	let projects = move || match projects.borrow() {

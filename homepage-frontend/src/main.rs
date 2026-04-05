@@ -6,7 +6,8 @@
 	thread_local,
 	type_alias_impl_trait,
 	stmt_expr_attributes,
-	proc_macro_hygiene
+	proc_macro_hygiene,
+	type_changing_struct_update
 )]
 
 // Modules
@@ -19,7 +20,7 @@ use {
 	app_error::AppError,
 	dynatos_reactive::SignalGetCloned,
 	dynatos_web::{ElementWithClass, NodeWithChildren, html},
-	dynatos_web_reactive::{NodeWithDynChild, ObjectAttachContext},
+	dynatos_web_reactive::NodeWithDynChild,
 	dynatos_web_router::Location,
 	std::rc::Rc,
 	tracing_subscriber::prelude::*,
@@ -55,7 +56,6 @@ fn run() -> Result<(), AppError> {
 	let body = document.body().expect("Unable to get document body");
 
 	let location = Location::new();
-	body.attach_context(location.clone());
 
 	// Build the backend url
 	// TODO: Should this be reactive?
@@ -63,27 +63,36 @@ fn run() -> Result<(), AppError> {
 		.get_cloned_no_dep()
 		.join("backend/")
 		.expect("Backend url was invalid");
-	body.attach_context(BackendUrl(Rc::new(backend_url)));
+	let backend_url = BackendUrl(backend_url.into());
 
 	// And attach our app to the body
 	body.with_child(
 		html::div()
 			.with_class("app")
-			.with_child(components::Sidebar::new())
-			.with_child(html::div().with_class("body").with_dyn_child(self::render_route)),
+			.with_child(
+				components::Sidebar::builder()
+					.location(location.clone())
+					.backend_url(backend_url.clone())
+					.build(),
+			)
+			.with_child(
+				html::div()
+					.with_class("body")
+					.with_dyn_child(move || self::render_route(&location, backend_url.clone())),
+			),
 	);
 
 	Ok(())
 }
 
 
-fn render_route() -> Option<web_sys::HtmlElement> {
-	let location = dynatos_context::with_expect::<Location, _, _>(|location| location.get_cloned());
+fn render_route(location: &Location, backend_url: BackendUrl) -> Option<web_sys::HtmlElement> {
+	let location = location.get_cloned();
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
 		"" => Some(pages::Home::new()),
-		"/projects" => Some(pages::Projects::new()),
+		"/projects" => Some(pages::Projects::builder().backend_url(backend_url).build()),
 		"/cv" => Some(pages::CV::new()),
 		"/about-me" => Some(pages::AboutMe::new()),
 		_ => Some(pages::NotFound::new()),

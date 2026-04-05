@@ -7,32 +7,38 @@ use {
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
 	dynatos_web::{ElementWithAttr, NodeWithChildren, NodeWithText, html},
+	dynatos_web_router::Location,
+	zutil_cloned::cloned,
 };
 
 #[dynatos_builder::builder]
-pub fn Sidebar() -> web_sys::HtmlElement {
+pub fn Sidebar(location: Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
 	let local_links = [
 		("/", "Home"),
 		("/projects", "Projects"),
 		("/cv", "CV"),
 		("/about-me", "About me"),
 	];
-	let external_links = LoadableSignal::new(|| async move {
-		let backend_url = dynatos_context::expect_cloned::<BackendUrl>();
-		let external_links_url = backend_url.join("external-links").context("Unable to create url")?;
-		let external_links = reqwest::get(external_links_url)
-			.await
-			.context("Unable to get external links")?
-			.json::<homepage::ExternalLinks>()
-			.await
-			.context("Unable to parse external links")?;
+	let external_links = LoadableSignal::new(move || {
+		#[cloned(backend_url)]
+		async move {
+			let external_links_url = backend_url.join("external-links").context("Unable to create url")?;
+			let external_links = reqwest::get(external_links_url)
+				.await
+				.context("Unable to get external links")?
+				.json::<homepage::ExternalLinks>()
+				.await
+				.context("Unable to parse external links")?;
 
-		Ok::<_, AppError>(external_links)
+			Ok::<_, AppError>(external_links)
+		}
 	});
 
 	let local_links = local_links
 		.iter()
-		.map(|&(location, text)| html::li().with_child(dynatos_web_router::anchor(location).with_text(text)))
+		.map(|&(new_location, text)| {
+			html::li().with_child(dynatos_web_router::anchor(location.clone(), new_location).with_text(text))
+		})
 		.collect::<Vec<_>>();
 
 	let external_links = move || match external_links.borrow() {
