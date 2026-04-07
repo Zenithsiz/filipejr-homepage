@@ -6,7 +6,7 @@ edition = "2024"
 [dependencies]
 
 # Workspace
-homepage = { workspace = true }
+homepage = { path = "../homepage" }
 
 app-error                = { workspace = true }
 console_error_panic_hook = { workspace = true }

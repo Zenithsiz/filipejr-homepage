@@ -14,7 +14,7 @@ depends            = []
 [dependencies]
 
 # Workspace
-homepage = { workspace = true }
+homepage = { path = "../homepage" }
 
 app-error    = { workspace = true }
 axum         = { workspace = true }
