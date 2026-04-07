@@ -73,7 +73,7 @@ async fn main() -> Result<(), AppError> {
 			.with_state(Arc::clone(&config))
 	};
 
-	let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)), config.port);
+	let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), config.port);
 	let listener = tokio::net::TcpListener::bind(addr)
 		.await
 		.context("Unable to create tcp listener")?;

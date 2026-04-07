@@ -3,14 +3,14 @@
 // Imports
 use url::Url;
 
-/// ExternalLinks
+/// External links
 #[derive(Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub struct ExternalLinks {
 	pub links: Vec<ExternalLink>,
 }
 
-/// ExternalLink
+/// External link
 #[derive(Clone, Debug)]
 #[derive(serde::Serialize, serde::Deserialize)]
 pub struct ExternalLink {

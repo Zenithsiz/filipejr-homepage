@@ -7,3 +7,6 @@ edition = "2024"
 
 serde = { features = ["derive"], workspace = true }
 url   = { features = ["serde"], workspace = true }
+
+[lints]
+workspace = true

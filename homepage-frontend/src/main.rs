@@ -43,6 +43,7 @@ fn main() {
 #[deref(forward)]
 struct BackendUrl(Rc<Url>);
 
+#[expect(clippy::unnecessary_wraps, reason = "It might be fallible in the future")]
 fn run() -> Result<(), AppError> {
 	let window = web_sys::window().expect("Unable to get window");
 	let document = window.document().expect("Unable to get document");
@@ -62,7 +63,7 @@ fn run() -> Result<(), AppError> {
 	body.with_child(
 		html::div()
 			.with_class("app")
-			.with_child(components::sidebar(location.clone(), backend_url.clone()))
+			.with_child(components::sidebar(&location, backend_url.clone()))
 			.with_child(
 				html::div()
 					.with_class("body")
@@ -74,15 +75,15 @@ fn run() -> Result<(), AppError> {
 }
 
 
-fn render_route(location: &Location, backend_url: BackendUrl) -> Option<web_sys::HtmlElement> {
+fn render_route(location: &Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
 	let location = location.get_cloned();
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
-		"" => Some(pages::home()),
-		"/projects" => Some(pages::projects(backend_url)),
-		"/cv" => Some(pages::cv()),
-		"/about-me" => Some(pages::about_me()),
-		_ => Some(pages::not_found()),
+		"" => pages::home(),
+		"/projects" => pages::projects(backend_url),
+		"/cv" => pages::cv(),
+		"/about-me" => pages::about_me(),
+		_ => pages::not_found(),
 	}
 }

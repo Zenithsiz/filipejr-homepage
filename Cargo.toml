@@ -40,3 +40,13 @@ wasm-bindgen             = "0.2.114"
 web-sys                  = "0.3.91"
 zutil-cloned             = "0.1.0"
 zutil-logger             = "0.1.0"
+
+[workspace.lints]
+
+clippy.nursery  = { level = "warn", priority = -1 }
+clippy.pedantic = { level = "warn", priority = -1 }
+
+rust.unused_crate_dependencies = "warn"
+
+# This triggers too often in plural forms
+clippy.similar-names = "allow"

@@ -16,12 +16,13 @@ depends            = []
 # Workspace
 homepage = { workspace = true }
 
-app-error          = { workspace = true }
-axum               = { workspace = true }
-serde              = { features = ["derive"], workspace = true }
-tokio              = { features = ["full"], workspace = true }
-toml               = { workspace = true }
-tracing            = { workspace = true }
-tracing-subscriber = { features = ["env-filter"], workspace = true }
-url                = { workspace = true }
-zutil-logger       = { workspace = true }
+app-error    = { workspace = true }
+axum         = { workspace = true }
+serde        = { features = ["derive"], workspace = true }
+tokio        = { features = ["full"], workspace = true }
+toml         = { workspace = true }
+tracing      = { workspace = true }
+zutil-logger = { workspace = true }
+
+[lints]
+workspace = true

@@ -193,15 +193,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "convert_case"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "affbf0190ed2caf063e3def54ff444b449371d55c58e513a95ab98eca50adb49"
-dependencies = [
- "unicode-segmentation",
-]
-
-[[package]]
 name = "core-foundation"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -242,7 +233,7 @@ version = "2.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "799a97264921d8623a957f6c3b9011f3b5492f557bbb7a5a19b7fa6d06ba8dcb"
 dependencies = [
- "convert_case 0.10.0",
+ "convert_case",
  "proc-macro2",
  "quote",
  "rustc_version",
@@ -287,24 +278,6 @@ dependencies = [
  "heck",
  "proc-macro2",
  "proc-macro2-diagnostics",
-]
-
-[[package]]
-name = "dynatos-builder"
-version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
-dependencies = [
- "dynatos-builder-macros",
-]
-
-[[package]]
-name = "dynatos-builder-macros"
-version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
-dependencies = [
- "convert_case 0.11.0",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -722,8 +695,6 @@ dependencies = [
  "tokio",
  "toml",
  "tracing",
- "tracing-subscriber",
- "url",
  "zutil-logger",
 ]
 
@@ -734,15 +705,12 @@ dependencies = [
  "app-error",
  "console_error_panic_hook",
  "derive_more",
- "dynatos-builder",
  "dynatos-loadable",
  "dynatos-reactive",
- "dynatos-util",
  "dynatos-web",
  "dynatos-web-reactive",
  "dynatos-web-router",
  "dynatos-web-title",
- "extend",
  "homepage",
  "reqwest",
  "strum",
@@ -750,7 +718,6 @@ dependencies = [
  "tracing-subscriber",
  "tracing-web",
  "url",
- "wasm-bindgen",
  "web-sys",
  "zutil-cloned",
 ]
