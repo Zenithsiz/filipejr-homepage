@@ -1,14 +1,7 @@
 //! Homepage frontend
 
 // Features
-#![feature(
-	try_blocks,
-	thread_local,
-	type_alias_impl_trait,
-	stmt_expr_attributes,
-	proc_macro_hygiene,
-	type_changing_struct_update
-)]
+#![feature(stmt_expr_attributes, proc_macro_hygiene)]
 
 // Modules
 mod components;

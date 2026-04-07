@@ -1,7 +1,7 @@
 //! Homepage backend
 
 // Features
-#![feature(stmt_expr_attributes, proc_macro_hygiene, yeet_expr)]
+#![feature(proc_macro_hygiene, yeet_expr)]
 
 // Imports
 use {
