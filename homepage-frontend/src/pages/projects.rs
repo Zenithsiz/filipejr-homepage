@@ -19,7 +19,7 @@ pub fn projects(backend_url: BackendUrl) -> web_sys::HtmlElement {
 			let projects = reqwest::get(projects_url)
 				.await
 				.context("Unable to get project")?
-				.json::<homepage::Projects>()
+				.json::<homepage_dto::Projects>()
 				.await
 				.context("Unable to parse projects")?;
 

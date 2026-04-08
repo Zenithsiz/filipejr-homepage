@@ -677,25 +677,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 
 [[package]]
-name = "homepage"
-version = "0.1.0"
-dependencies = [
- "serde",
- "url",
-]
-
-[[package]]
 name = "homepage-backend"
 version = "0.1.0"
 dependencies = [
  "app-error",
  "axum",
- "homepage",
+ "homepage-dto",
  "serde",
  "tokio",
  "toml",
  "tracing",
  "zutil-logger",
+]
+
+[[package]]
+name = "homepage-dto"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "url",
 ]
 
 [[package]]
@@ -711,7 +711,7 @@ dependencies = [
  "dynatos-web-reactive",
  "dynatos-web-router",
  "dynatos-web-title",
- "homepage",
+ "homepage-dto",
  "reqwest",
  "strum",
  "tracing",

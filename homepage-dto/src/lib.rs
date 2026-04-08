@@ -1,4 +1,4 @@
-//! Homepage
+//! Homepage DTOs
 
 // Imports
 use url::Url;

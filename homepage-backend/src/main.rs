@@ -12,7 +12,7 @@ use {
 		http::StatusCode,
 		response::IntoResponse,
 	},
-	homepage::{ExternalLinks, Projects},
+	homepage_dto::{ExternalLinks, Projects},
 	std::{
 		io,
 		net::{IpAddr, Ipv4Addr, SocketAddr},

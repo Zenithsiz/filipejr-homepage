@@ -25,7 +25,7 @@ pub fn sidebar(location: &Location, backend_url: BackendUrl) -> web_sys::HtmlEle
 			let external_links = reqwest::get(external_links_url)
 				.await
 				.context("Unable to get external links")?
-				.json::<homepage::ExternalLinks>()
+				.json::<homepage_dto::ExternalLinks>()
 				.await
 				.context("Unable to parse external links")?;
 

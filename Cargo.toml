@@ -1,6 +1,6 @@
 [workspace]
 
-members  = ["homepage", "homepage-backend", "homepage-frontend"]
+members  = ["homepage-backend", "homepage-dto", "homepage-frontend"]
 resolver = "2"
 
 [workspace.package]
