@@ -56,5 +56,5 @@ pub fn sidebar(location: &Location, backend_url: BackendUrl) -> web_sys::HtmlEle
 			.collect::<Vec<_>>(),
 	};
 
-	dynatos_web::html_file!("homepage-frontend/html/components/sidebar.html")
+	dynatos_web::html_file!("homepage/html/components/sidebar.html")
 }

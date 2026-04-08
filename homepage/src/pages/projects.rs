@@ -34,10 +34,10 @@ pub fn projects(backend_url: BackendUrl) -> web_sys::HtmlElement {
 			projects
 				.projects
 				.iter()
-				.map(|project| dynatos_web::html_file!("homepage-frontend/html/pages/projects/project.html"))
+				.map(|project| dynatos_web::html_file!("homepage/html/pages/projects/project.html"))
 				.collect::<Vec<_>>(),
 		),
 	};
 
-	dynatos_web::html_file!("homepage-frontend/html/pages/projects.html").with_title("Projects | Filipejr")
+	dynatos_web::html_file!("homepage/html/pages/projects.html").with_title("Projects | Filipejr")
 }

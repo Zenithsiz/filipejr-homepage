@@ -1,6 +1,6 @@
 [workspace]
 
-members  = ["homepage-backend", "homepage-dto", "homepage-frontend"]
+members  = ["homepage", "homepage-backend", "homepage-dto", "homepage-frontend"]
 resolver = "2"
 
 [workspace.package]
@@ -45,3 +45,6 @@ rust.unused_crate_dependencies = "warn"
 
 # This triggers too often in plural forms
 clippy.similar-names = "allow"
+
+# Misc.
+clippy.missing_panics_doc = "allow"
