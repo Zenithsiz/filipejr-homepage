@@ -283,21 +283,17 @@ dependencies = [
 [[package]]
 name = "dynatos-loadable"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
- "duplicate",
  "dynatos-reactive",
  "dynatos-sync-types",
- "dynatos-util",
  "extend",
- "tracing",
- "zutil-cloned",
 ]
 
 [[package]]
 name = "dynatos-reactive"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -307,8 +303,6 @@ dependencies = [
  "futures",
  "itertools",
  "petgraph",
- "pin-project",
- "scopeguard",
  "tracing",
  "wasm-bindgen-futures",
  "zutil-cloned",
@@ -317,28 +311,28 @@ dependencies = [
 [[package]]
 name = "dynatos-sync-types"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "derive_more",
  "duplicate",
- "dynatos-util",
 ]
 
 [[package]]
 name = "dynatos-util"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
- "duplicate",
  "extend",
 ]
 
 [[package]]
 name = "dynatos-web"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
+ "app-error",
  "duplicate",
+ "dynatos-sync-types",
  "dynatos-util",
  "dynatos-web-macros",
  "dynatos-web-parser",
@@ -354,10 +348,9 @@ dependencies = [
 [[package]]
 name = "dynatos-web-macros"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "dynatos-web-parser",
- "itertools",
  "proc-macro2",
  "quote",
  "strum",
@@ -367,7 +360,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-parser"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "thiserror 2.0.18",
  "unicode-xid",
@@ -376,7 +369,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-reactive"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "duplicate",
  "dynatos-reactive",
@@ -387,7 +380,6 @@ dependencies = [
  "dynatos-web-router",
  "extend",
  "js-sys",
- "tracing",
  "wasm-bindgen",
  "web-sys",
 ]
@@ -395,26 +387,20 @@ dependencies = [
 [[package]]
 name = "dynatos-web-reactive-macros"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
  "derive_utils",
- "quote",
- "syn",
 ]
 
 [[package]]
 name = "dynatos-web-router"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
- "duplicate",
  "dynatos-loadable",
  "dynatos-reactive",
  "dynatos-sync-types",
- "dynatos-util",
  "dynatos-web",
- "extend",
- "js-sys",
  "thiserror 2.0.18",
  "tracing",
  "url",
@@ -426,18 +412,14 @@ dependencies = [
 [[package]]
 name = "dynatos-web-title"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=c0723c00e0a2aade1a86162f263d70bed150729b#c0723c00e0a2aade1a86162f263d70bed150729b"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=17d8cc3437f79cb77be3e1cb06d039d1ef55e94f#17d8cc3437f79cb77be3e1cb06d039d1ef55e94f"
 dependencies = [
- "duplicate",
- "dynatos-reactive",
  "dynatos-sync-types",
  "dynatos-util",
  "dynatos-web",
  "extend",
  "js-sys",
- "tracing",
  "wasm-bindgen",
- "web-sys",
 ]
 
 [[package]]
@@ -725,12 +707,12 @@ version = "0.1.0"
 dependencies = [
  "app-error",
  "console_error_panic_hook",
+ "dynatos-web",
  "dynatos-web-router",
  "homepage",
  "tracing",
  "tracing-subscriber",
  "tracing-web",
- "web-sys",
 ]
 
 [[package]]
@@ -1164,26 +1146,6 @@ dependencies = [
  "hashbrown 0.15.5",
  "indexmap",
  "serde",
-]
-
-[[package]]
-name = "pin-project"
-version = "1.1.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f1749c7ed4bcaf4c3d0a3efc28538844fb29bcdd7d2b67b2be7e20ba861ff517"
-dependencies = [
- "pin-project-internal",
-]
-
-[[package]]
-name = "pin-project-internal"
-version = "1.1.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9b20ed30f105399776b9c883e68e536ef602a16ae6f596d2c473591d6ad64c6"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]

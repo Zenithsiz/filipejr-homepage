@@ -1,7 +1,12 @@
 //! Homepage frontend
 
 // Imports
-use {app_error::AppError, dynatos_web_router::Location, tracing_subscriber::prelude::*};
+use {
+	app_error::{AppError, Context},
+	dynatos_web::DynatosWebCtx,
+	dynatos_web_router::Location,
+	tracing_subscriber::prelude::*,
+};
 
 fn main() {
 	console_error_panic_hook::set_once();
@@ -21,15 +26,11 @@ fn main() {
 	}
 }
 
-#[expect(clippy::unnecessary_wraps, reason = "It might be fallible in the future")]
 fn run() -> Result<(), AppError> {
-	let window = web_sys::window().expect("Unable to get window");
-	let document = window.document().expect("Unable to get document");
-	let body = document.body().expect("Unable to get document body");
+	let ctx = DynatosWebCtx::new().context("Unable to build dynatos web context")?;
+	let location = Location::new(&ctx);
 
-	let location = Location::new();
-
-	homepage::attach_to_body(&body, location);
+	homepage::attach_to_body(&ctx, location);
 
 	Ok(())
 }

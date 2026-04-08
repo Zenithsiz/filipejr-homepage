@@ -6,12 +6,12 @@ use {
 	app_error::{AppError, Context},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
-	dynatos_web::{ElementWithAttr, NodeWithChildren, NodeWithText, html},
+	dynatos_web::{DynatosWebCtx, ElementWithAttr, NodeWithChildren, NodeWithText, html},
 	dynatos_web_router::Location,
 	zutil_cloned::cloned,
 };
 
-pub fn sidebar(location: &Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
+pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
 	let local_links = [
 		("/", "Home"),
 		("/projects", "Projects"),
@@ -36,19 +36,20 @@ pub fn sidebar(location: &Location, backend_url: BackendUrl) -> web_sys::HtmlEle
 	let local_links = local_links
 		.iter()
 		.map(|&(new_location, text)| {
-			html::li().with_child(dynatos_web_router::anchor(location.clone(), new_location).with_text(text))
+			html::li(ctx).with_child(dynatos_web_router::anchor(ctx, location.clone(), new_location).with_text(text))
 		})
 		.collect::<Vec<_>>();
 
+	#[cloned(ctx)]
 	let external_links = move || match external_links.borrow() {
-		Loadable::Empty => vec![html::p().with_text("Loading...")],
-		Loadable::Err(err) => vec![html::pre().with_text(format!("Unable to load projects:\n{err:?}"))],
+		Loadable::Empty => vec![html::p(&ctx).with_text("Loading...")],
+		Loadable::Err(err) => vec![html::pre(&ctx).with_text(format!("Unable to load projects:\n{err:?}"))],
 		Loadable::Loaded(external_links) => external_links
 			.links
 			.iter()
 			.map(|link| {
-				html::li().with_child(
-					html::a()
+				html::li(&ctx).with_child(
+					html::a(&ctx)
 						.with_attr("href", &link.location)
 						.with_text(link.text.as_str()),
 				)
