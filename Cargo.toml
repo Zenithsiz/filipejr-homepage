@@ -14,16 +14,16 @@ axum                     = "0.8.8"
 axum-cookie              = "0.2.4"
 console_error_panic_hook = "0.1.7"
 derive_more              = "2.1.1"
-dynatos-loadable         = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-reactive         = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-sync-types       = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-util             = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web              = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web-reactive     = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web-router       = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web-ssr          = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web-ssr-server   = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
-dynatos-web-title        = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "7df18db03690ebf8b6606a9e8579eab2e460ca5f" }
+dynatos-loadable         = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-reactive         = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-sync-types       = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-util             = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web              = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web-reactive     = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web-router       = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web-ssr          = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web-ssr-server   = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
+dynatos-web-title        = { default-features = false, git = "https://github.com/Zenithsiz/dynatos", rev = "511470d966246bb84fcdc3ffff8dabf2f5413599" }
 extend                   = "1.2.0"
 reqwest                  = "0.13.2"
 serde                    = "1.0.228"

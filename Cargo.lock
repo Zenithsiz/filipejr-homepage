@@ -329,7 +329,7 @@ dependencies = [
 [[package]]
 name = "dynatos-inheritance"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-inheritance-macros",
 ]
@@ -337,7 +337,7 @@ dependencies = [
 [[package]]
 name = "dynatos-inheritance-macros"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "convert_case 0.11.0",
  "proc-macro2",
@@ -349,7 +349,7 @@ dependencies = [
 [[package]]
 name = "dynatos-loadable"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-reactive",
  "dynatos-sync-types",
@@ -359,7 +359,7 @@ dependencies = [
 [[package]]
 name = "dynatos-reactive"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -378,7 +378,7 @@ dependencies = [
 [[package]]
 name = "dynatos-sync-types"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "derive_more",
  "duplicate",
@@ -387,7 +387,7 @@ dependencies = [
 [[package]]
 name = "dynatos-util"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "extend",
 ]
@@ -395,7 +395,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "app-error",
  "duplicate",
@@ -418,7 +418,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-macros"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-web-parser",
  "proc-macro2",
@@ -430,7 +430,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-parser"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "thiserror 2.0.18",
  "unicode-xid",
@@ -439,7 +439,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-reactive"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "duplicate",
  "dynatos-inheritance",
@@ -458,7 +458,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-reactive-macros"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "derive_utils",
 ]
@@ -466,7 +466,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-router"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-loadable",
  "dynatos-reactive",
@@ -481,7 +481,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-ssr"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "app-error",
  "derive_more",
@@ -495,7 +495,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-ssr-server"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "app-error",
  "axum",
@@ -504,6 +504,7 @@ dependencies = [
  "dynatos-web-ssr",
  "serde",
  "tracing",
+ "url",
  "uuid",
  "zutil-cloned",
 ]
@@ -511,7 +512,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-title"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-sync-types",
  "dynatos-util",
@@ -523,7 +524,7 @@ dependencies = [
 [[package]]
 name = "dynatos-web-types"
 version = "0.1.0"
-source = "git+https://github.com/Zenithsiz/dynatos?rev=7df18db03690ebf8b6606a9e8579eab2e460ca5f#7df18db03690ebf8b6606a9e8579eab2e460ca5f"
+source = "git+https://github.com/Zenithsiz/dynatos?rev=511470d966246bb84fcdc3ffff8dabf2f5413599#511470d966246bb84fcdc3ffff8dabf2f5413599"
 dependencies = [
  "dynatos-inheritance",
  "dynatos-web-ssr",
@@ -815,6 +816,7 @@ dependencies = [
  "tokio",
  "toml",
  "tracing",
+ "url",
  "zutil-logger",
 ]
 

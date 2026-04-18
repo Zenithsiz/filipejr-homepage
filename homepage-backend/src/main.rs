@@ -21,6 +21,7 @@ use {
 		sync::Arc,
 	},
 	tokio::fs,
+	url::Url,
 };
 
 #[derive(Debug)]
@@ -32,8 +33,10 @@ struct Config {
 	/// Resources directory
 	resources: PathBuf,
 
-	/// Css directory
-	css: PathBuf,
+	/// Location url.
+	///
+	/// Used during SSR.
+	location: Url,
 }
 
 impl Default for Config {
@@ -41,7 +44,7 @@ impl Default for Config {
 		Self {
 			port:      8081,
 			resources: PathBuf::from("resources/"),
-			css:       PathBuf::from("resources/"),
+			location:  "http://localhost:8081".parse().expect("Should be a valid url"),
 		}
 	}
 }
@@ -77,16 +80,19 @@ async fn main() -> Result<(), AppError> {
 	// Then build the app
 	let app = {
 		use axum::routing::{any, get};
+		let ssr_router = dynatos_web_ssr_server::axum::router(
+			homepage::attach,
+			state.config.location.clone(),
+			Duration::from_hours(1),
+		);
+
 		axum::Router::new()
 			.route("/backend/{*path}", any(self::redirect_backend))
 			.route("/projects", get(self::projects))
 			.route("/external-links", get(self::external_links))
 			.route("/cv.pdf", get(self::cv))
 			.with_state(Arc::clone(&state))
-			.nest(
-				"/ssr/",
-				dynatos_web_ssr_server::axum::router(homepage::attach, Duration::from_hours(1)),
-			)
+			.nest("/ssr/", ssr_router)
 	};
 
 	let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), state.config.port);

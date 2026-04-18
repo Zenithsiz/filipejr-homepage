@@ -1,3 +1,3 @@
 port      = 8081
 resources = "../resources/"
-css       = "../homepage-frontend/dist/css"
+location  = "http://localhost:8081"
