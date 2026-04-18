@@ -2,12 +2,12 @@
 
 // Imports
 use {
-	dynatos_web::{DynatosWebCtx, NodeWithText, html},
+	dynatos_web::{DynatosWebCtx, NodeWithText, html, types::HtmlElement},
 	dynatos_web_title::ObjectWithTitle,
 };
 
-pub fn not_found(ctx: &DynatosWebCtx) -> web_sys::HtmlElement {
+pub fn not_found(ctx: &DynatosWebCtx, page: &str) -> HtmlElement {
 	html::p(ctx)
 		.with_title(ctx, "Not found | Filipejr")
-		.with_text("Unknown page")
+		.with_text(format!("Unknown page: {page:?}"))
 }

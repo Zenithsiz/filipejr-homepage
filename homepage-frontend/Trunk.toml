@@ -7,6 +7,10 @@ minify = "on_release"
 rewrite = "/backend/"
 backend = "http://localhost:8081/"
 
+[[proxy]]
+rewrite = "/ssr/"
+backend = "http://localhost:8081/ssr/"
+
 [[hooks]]
 stage   = "build"
 command = "./build-css.sh"

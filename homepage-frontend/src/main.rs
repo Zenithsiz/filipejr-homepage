@@ -4,7 +4,6 @@
 use {
 	app_error::{AppError, Context},
 	dynatos_web::DynatosWebCtx,
-	dynatos_web_router::Location,
 	tracing_subscriber::prelude::*,
 };
 
@@ -28,9 +27,7 @@ fn main() {
 
 fn run() -> Result<(), AppError> {
 	let ctx = DynatosWebCtx::new().context("Unable to build dynatos web context")?;
-	let location = Location::new(&ctx);
-
-	homepage::attach_to_body(&ctx, location);
+	homepage::attach(&ctx);
 
 	Ok(())
 }

@@ -3,14 +3,23 @@
 // Imports
 use {
 	dynatos_reactive::{Signal, SignalGet, SignalSet},
-	dynatos_web::{DynatosWebCtx, ElementWithClass, EventTargetWithListener, NodeWithChildren, NodeWithText, ev, html},
+	dynatos_web::{
+		DynatosWebCtx,
+		ElementWithClass,
+		EventTargetWithListener,
+		NodeWithChildren,
+		NodeWithText,
+		ev,
+		html,
+		types::HtmlElement,
+	},
 	dynatos_web_reactive::ElementWithDynAttr,
 	dynatos_web_title::ObjectWithTitle,
 	strum::IntoEnumIterator,
 	zutil_cloned::cloned,
 };
 
-pub fn cv(ctx: &DynatosWebCtx) -> web_sys::HtmlElement {
+pub fn cv(ctx: &DynatosWebCtx) -> HtmlElement {
 	let cur_lang = Signal::new(Lang::En);
 
 	let langs_selector = Lang::iter()
@@ -23,7 +32,7 @@ pub fn cv(ctx: &DynatosWebCtx) -> web_sys::HtmlElement {
 			#[cloned(cur_lang)]
 			html::button(ctx)
 				.with_text(display)
-				.with_event_listener::<ev!(click)>(move |_| cur_lang.set(lang))
+				.with_event_listener::<ev!(click)>(ctx, move |_| cur_lang.set(lang))
 		})
 		.collect::<Vec<_>>();
 	let lang_selector = html::div(ctx).with_class("lang-selector").with_children(langs_selector);

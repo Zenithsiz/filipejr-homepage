@@ -12,6 +12,7 @@ app-error            = { workspace = true }
 derive_more          = { features = ["full"], workspace = true }
 dynatos-loadable     = { workspace = true }
 dynatos-reactive     = { workspace = true }
+dynatos-sync-types   = { workspace = true }
 dynatos-web          = { workspace = true }
 dynatos-web-reactive = { workspace = true }
 dynatos-web-router   = { workspace = true }
@@ -20,8 +21,22 @@ reqwest              = { features = ["json"], workspace = true }
 strum                = { features = ["derive"], workspace = true }
 tracing              = { features = ["max_level_trace", "release_max_level_info"], workspace = true }
 url                  = { workspace = true }
-web-sys              = { workspace = true }
 zutil-cloned         = { workspace = true }
+
+[features]
+default = ["csr", "wasm-js-promise"]
+
+csr = ["dynatos-web-reactive/csr", "dynatos-web-title/csr", "dynatos-web/csr"]
+ssr = ["dynatos-web-reactive/ssr", "dynatos-web-router/ssr", "dynatos-web-title/ssr", "dynatos-web/ssr", "tokio"]
+sync = [
+	"dynatos-sync-types/sync",
+	"dynatos-web-reactive/sync",
+	"dynatos-web-router/sync",
+	"dynatos-web-title/sync",
+	"dynatos-web/sync",
+]
+tokio = ["dynatos-reactive/tokio"]
+wasm-js-promise = ["dynatos-reactive/wasm-js-promise"]
 
 [lints]
 workspace = true

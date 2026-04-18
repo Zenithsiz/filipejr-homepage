@@ -8,10 +8,11 @@ use {
 	app_error::{AppError, Context, ensure},
 	axum::{
 		Json,
-		extract::{Query, State},
+		extract,
 		http::StatusCode,
-		response::IntoResponse,
+		response::{IntoResponse, Redirect},
 	},
+	core::time::Duration,
 	homepage_dto::{ExternalLinks, Projects},
 	std::{
 		io,
@@ -30,6 +31,9 @@ struct Config {
 
 	/// Resources directory
 	resources: PathBuf,
+
+	/// Css directory
+	css: PathBuf,
 }
 
 impl Default for Config {
@@ -37,8 +41,13 @@ impl Default for Config {
 		Self {
 			port:      8081,
 			resources: PathBuf::from("resources/"),
+			css:       PathBuf::from("resources/"),
 		}
 	}
+}
+
+struct State {
+	config: Config,
 }
 
 #[tokio::main]
@@ -61,19 +70,26 @@ async fn main() -> Result<(), AppError> {
 		Err(err) => return Err(AppError::new(&err).context("Unable to read config file")),
 	};
 	tracing::debug!("Configuration: {config:?}");
-	let config = Arc::new(config);
+
+	let state = State { config };
+	let state = Arc::new(state);
 
 	// Then build the app
 	let app = {
-		use axum::routing::get;
+		use axum::routing::{any, get};
 		axum::Router::new()
+			.route("/backend/{*path}", any(self::redirect_backend))
 			.route("/projects", get(self::projects))
 			.route("/external-links", get(self::external_links))
 			.route("/cv.pdf", get(self::cv))
-			.with_state(Arc::clone(&config))
+			.with_state(Arc::clone(&state))
+			.nest(
+				"/ssr/",
+				dynatos_web_ssr_server::axum::router(homepage::attach, Duration::from_hours(1)),
+			)
 	};
 
-	let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), config.port);
+	let addr = SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), state.config.port);
 	let listener = tokio::net::TcpListener::bind(addr)
 		.await
 		.context("Unable to create tcp listener")?;
@@ -84,8 +100,16 @@ async fn main() -> Result<(), AppError> {
 	Ok(())
 }
 
-async fn external_links(State(config): State<Arc<Config>>) -> Result<Json<ExternalLinks>, ReqError> {
-	let external_links_path = config.resources.join("external-links.toml");
+#[axum::debug_handler]
+async fn redirect_backend(uri: extract::OriginalUri) -> Result<Redirect, ReqError> {
+	let uri = uri.to_string();
+	let uri = uri.strip_prefix("/backend").context("Missing prefix")?;
+
+	Ok(Redirect::permanent(uri))
+}
+
+async fn external_links(extract::State(state): extract::State<Arc<State>>) -> Result<Json<ExternalLinks>, ReqError> {
+	let external_links_path = state.config.resources.join("external-links.toml");
 	let external_links = fs::read_to_string(external_links_path)
 		.await
 		.context("Unable to read external links")?;
@@ -94,8 +118,8 @@ async fn external_links(State(config): State<Arc<Config>>) -> Result<Json<Extern
 	Ok(Json(external_links))
 }
 
-async fn projects(State(config): State<Arc<Config>>) -> Result<Json<Projects>, ReqError> {
-	let projects_path = config.resources.join("projects.toml");
+async fn projects(extract::State(state): extract::State<Arc<State>>) -> Result<Json<Projects>, ReqError> {
+	let projects_path = state.config.resources.join("projects.toml");
 	let projects = fs::read_to_string(projects_path)
 		.await
 		.context("Unable to read projects")?;
@@ -110,13 +134,16 @@ struct CvQuery {
 	lang: String,
 }
 
-async fn cv(State(config): State<Arc<Config>>, Query(query): Query<CvQuery>) -> Result<Vec<u8>, ReqError> {
+async fn cv(
+	extract::State(state): extract::State<Arc<State>>,
+	extract::Query(query): extract::Query<CvQuery>,
+) -> Result<Vec<u8>, ReqError> {
 	// TODO: Is this check enough? Should we instead use something like `cap_std::Dir`?
 	ensure!(
 		!query.lang.contains(['/', '.']),
 		"Language cannot contain slashes or dots"
 	);
-	let cv_path = config.resources.join(format!("cv/{}.pdf", query.lang));
+	let cv_path = state.config.resources.join(format!("cv/{}.pdf", query.lang));
 
 	let cv = fs::read(cv_path).await?;
 	Ok(cv)

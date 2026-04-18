@@ -6,12 +6,20 @@ use {
 	app_error::{AppError, Context},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
-	dynatos_web::{DynatosWebCtx, ElementWithClass, NodeWithChildren, NodeWithText, html},
+	dynatos_web::{
+		DynatosWebCtx,
+		ElementWithClass,
+		NodeWithChildren,
+		NodeWithText,
+		ObjectWithValue,
+		html,
+		types::HtmlElement,
+	},
 	dynatos_web_title::ObjectWithTitle,
 	zutil_cloned::cloned,
 };
 
-pub fn projects(ctx: &DynatosWebCtx, backend_url: BackendUrl) -> web_sys::HtmlElement {
+pub fn projects(ctx: &DynatosWebCtx, backend_url: BackendUrl) -> HtmlElement {
 	let projects = LoadableSignal::new(move || {
 		#[cloned(backend_url)]
 		async move {
@@ -29,7 +37,7 @@ pub fn projects(ctx: &DynatosWebCtx, backend_url: BackendUrl) -> web_sys::HtmlEl
 
 	#[cloned(ctx)]
 	let projects = move || match projects.borrow() {
-		Loadable::Empty => html::p(&ctx).with_text("Loading..."),
+		Loadable::Empty => html::p(&ctx).with_value(ctx.wait_guard()).with_text("Loading..."),
 		Loadable::Err(err) => html::pre(&ctx).with_text(format!("Unable to load projects:\n{err:?}")),
 		Loadable::Loaded(projects) => html::ul(&ctx).with_class("projects").with_children(
 			projects

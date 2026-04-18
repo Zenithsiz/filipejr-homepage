@@ -6,12 +6,20 @@ use {
 	app_error::{AppError, Context},
 	dynatos_loadable::{Loadable, LoadableSignal},
 	dynatos_reactive::SignalBorrow,
-	dynatos_web::{DynatosWebCtx, ElementWithAttr, NodeWithChildren, NodeWithText, html},
+	dynatos_web::{
+		DynatosWebCtx,
+		ElementWithAttr,
+		NodeWithChildren,
+		NodeWithText,
+		ObjectWithValue,
+		html,
+		types::HtmlElement,
+	},
 	dynatos_web_router::Location,
 	zutil_cloned::cloned,
 };
 
-pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
+pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> HtmlElement {
 	let local_links = [
 		("/", "Home"),
 		("/projects", "Projects"),
@@ -36,13 +44,18 @@ pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl
 	let local_links = local_links
 		.iter()
 		.map(|&(new_location, text)| {
+			// TODO: We shouldn't have do to this. Ideally `dynatos_web_router::anchor`
+			//       would automatically add our prefix.
+			#[cfg(feature = "ssr")]
+			let new_location = format!("/ssr{new_location}");
+
 			html::li(ctx).with_child(dynatos_web_router::anchor(ctx, location.clone(), new_location).with_text(text))
 		})
 		.collect::<Vec<_>>();
 
 	#[cloned(ctx)]
 	let external_links = move || match external_links.borrow() {
-		Loadable::Empty => vec![html::p(&ctx).with_text("Loading...")],
+		Loadable::Empty => vec![html::p(&ctx).with_value(ctx.wait_guard()).with_text("Loading...")],
 		Loadable::Err(err) => vec![html::pre(&ctx).with_text(format!("Unable to load projects:\n{err:?}"))],
 		Loadable::Loaded(external_links) => external_links
 			.links

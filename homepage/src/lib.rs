@@ -11,20 +11,23 @@ mod util;
 // Imports
 use {
 	dynatos_reactive::SignalGetCloned,
-	dynatos_web::{DynatosWebCtx, ElementWithClass, NodeWithChildren, html},
+	dynatos_sync_types::RcPtr,
+	dynatos_web::{DynatosWebCtx, ElementWithClass, NodeAddChildren, NodeWithChildren, html, types::HtmlElement},
 	dynatos_web_reactive::NodeWithDynChild,
 	dynatos_web_router::Location,
-	std::rc::Rc,
 	url::Url,
 	zutil_cloned::cloned,
 };
 
+// TODO: `dynatos_sync_types` isn't public API so we should make our own.
 #[derive(Clone)]
 #[derive(derive_more::Deref)]
 #[deref(forward)]
-struct BackendUrl(Rc<Url>);
+struct BackendUrl(RcPtr<Url>);
 
-pub fn attach_to_body(ctx: &DynatosWebCtx, location: Location) {
+pub fn attach(ctx: &DynatosWebCtx) {
+	let location = Location::new(ctx);
+
 	// Build the backend url
 	// TODO: Should this be reactive?
 	let backend_url = location
@@ -32,6 +35,16 @@ pub fn attach_to_body(ctx: &DynatosWebCtx, location: Location) {
 		.join("backend/")
 		.expect("Backend url was invalid");
 	let backend_url = BackendUrl(backend_url.into());
+
+	ctx.head().add_children([
+		html!(r#"<link href="/css/default.css" rel="stylesheet" />"#),
+		html!(r#"<link href="/css/colors.css" rel="stylesheet" />"#),
+		html!(r#"<link href="/css/a.css" rel="stylesheet" />"#),
+		html!(r#"<link href="/css/app.css" rel="stylesheet" />"#),
+		html!(r#"<meta charset="UTF-8" />"#),
+		html!(r#"<meta name="viewport" content="width=device-width, initial-scale=1.0" />"#),
+		html!(r#"<title>Filipejr</title>"#),
+	]);
 
 	// And attach our app to the body
 	ctx.body().with_child(
@@ -47,7 +60,7 @@ pub fn attach_to_body(ctx: &DynatosWebCtx, location: Location) {
 }
 
 
-fn render_route(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> web_sys::HtmlElement {
+fn render_route(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> HtmlElement {
 	let location = location.get_cloned();
 
 	tracing::debug!(%location, "Rendering route");
@@ -56,6 +69,6 @@ fn render_route(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUr
 		"/projects" => pages::projects(ctx, backend_url),
 		"/cv" => pages::cv(ctx),
 		"/about-me" => pages::about_me(ctx),
-		_ => pages::not_found(ctx),
+		page => pages::not_found(ctx, page),
 	}
 }

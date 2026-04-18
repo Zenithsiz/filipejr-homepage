@@ -11,7 +11,6 @@ homepage = { path = "../homepage" }
 app-error                = { workspace = true }
 console_error_panic_hook = { workspace = true }
 dynatos-web              = { workspace = true }
-dynatos-web-router       = { workspace = true }
 tracing                  = { features = ["max_level_trace", "release_max_level_info"], workspace = true }
 tracing-subscriber       = { workspace = true }
 tracing-web              = { workspace = true }
