@@ -65,12 +65,11 @@ pub fn attach(ctx: &DynatosWebCtx) {
 
 fn render_route(ctx: &DynatosWebCtx) -> HtmlElement {
 	let location = ctx.store().get::<LocationSignal>().get_cloned();
-	let backend_url = ctx.store().get::<BackendUrl>();
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {
 		"" => pages::home(ctx),
-		"/projects" => pages::projects(ctx, backend_url),
+		"/projects" => pages::projects(ctx),
 		"/cv" => pages::cv(ctx),
 		"/about-me" => pages::about_me(ctx),
 		page => pages::not_found(ctx, page),

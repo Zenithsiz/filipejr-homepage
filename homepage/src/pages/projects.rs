@@ -19,7 +19,9 @@ use {
 	zutil_cloned::cloned,
 };
 
-pub fn projects(ctx: &DynatosWebCtx, backend_url: BackendUrl) -> HtmlElement {
+pub fn projects(ctx: &DynatosWebCtx) -> HtmlElement {
+	let backend_url = ctx.store().get::<BackendUrl>();
+
 	let projects = LoadableSignal::new(move || {
 		#[cloned(backend_url)]
 		async move {
