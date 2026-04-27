@@ -14,7 +14,7 @@ use {
 	dynatos_sync_types::RcPtr,
 	dynatos_web::{DynatosWebCtx, ElementWithClass, NodeAddChildren, NodeWithChildren, html, types::HtmlElement},
 	dynatos_web_reactive::NodeWithDynChild,
-	dynatos_web_router::Location,
+	dynatos_web_router::LocationSignal,
 	url::Url,
 	zutil_cloned::cloned,
 };
@@ -26,7 +26,7 @@ use {
 struct BackendUrl(RcPtr<Url>);
 
 pub fn attach(ctx: &DynatosWebCtx) {
-	let location = Location::new(ctx);
+	let location = LocationSignal::new(ctx);
 
 	// Build the backend url
 	// TODO: Should this be reactive?
@@ -35,6 +35,9 @@ pub fn attach(ctx: &DynatosWebCtx) {
 		.join("backend/")
 		.expect("Backend url was invalid");
 	let backend_url = BackendUrl(backend_url.into());
+
+	ctx.store().set(location);
+	ctx.store().set(backend_url);
 
 	ctx.head().add_children([
 		html!(r#"<link href="/css/default.css" rel="stylesheet" />"#),
@@ -50,18 +53,19 @@ pub fn attach(ctx: &DynatosWebCtx) {
 	ctx.body().with_child(
 		html::div(ctx)
 			.with_class("app")
-			.with_child(components::sidebar(ctx, &location, backend_url.clone()))
+			.with_child(components::sidebar(ctx))
 			.with_child(html::div(ctx).with_class("body").with_dyn_child(
 				ctx,
 				#[cloned(ctx)]
-				move || self::render_route(&ctx, &location, backend_url.clone()),
+				move || self::render_route(&ctx),
 			)),
 	);
 }
 
 
-fn render_route(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> HtmlElement {
-	let location = location.get_cloned();
+fn render_route(ctx: &DynatosWebCtx) -> HtmlElement {
+	let location = ctx.store().get::<LocationSignal>().get_cloned();
+	let backend_url = ctx.store().get::<BackendUrl>();
 
 	tracing::debug!(%location, "Rendering route");
 	match location.path().trim_end_matches('/') {

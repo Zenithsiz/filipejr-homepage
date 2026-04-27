@@ -15,11 +15,12 @@ use {
 		html,
 		types::HtmlElement,
 	},
-	dynatos_web_router::Location,
 	zutil_cloned::cloned,
 };
 
-pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl) -> HtmlElement {
+pub fn sidebar(ctx: &DynatosWebCtx) -> HtmlElement {
+	let backend_url = ctx.store().get::<BackendUrl>();
+
 	let local_links = [
 		("/", "Home"),
 		("/projects", "Projects"),
@@ -49,7 +50,7 @@ pub fn sidebar(ctx: &DynatosWebCtx, location: &Location, backend_url: BackendUrl
 			#[cfg(feature = "ssr")]
 			let new_location = format!("/ssr{new_location}");
 
-			html::li(ctx).with_child(dynatos_web_router::anchor(ctx, location.clone(), new_location).with_text(text))
+			html::li(ctx).with_child(dynatos_web_router::anchor(ctx, new_location).with_text(text))
 		})
 		.collect::<Vec<_>>();
 
